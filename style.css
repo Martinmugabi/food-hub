@@ -96,10 +96,6 @@
 
 
 /* home page stylles*/
-.home{
-
-    
-}
 .pp1{
     font-size: 2.5em;
     color: #333;
@@ -281,3 +277,41 @@
     background-color: #e55347; /* Darker shade on hover */
     transform: scale(1.05);
 }
+
+
+/* Portfolio section styles */
+.portifolio-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #d6d4d4;
+}
+.portifolio-item{
+    flex-wrap: wrap;
+    background-color: #fff;
+    justify-items: center;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+.portifolio-item img{
+    width: 200px;
+    height: 200px;
+    gap: 20px;
+    justify-content: space-between;
+    margin: 5px;
+    border-radius: 2px;
+}
+
+.section-title{
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    justify-items: center;
+    text-align: center;
+}
+
+
+
