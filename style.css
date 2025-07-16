@@ -684,6 +684,8 @@
     text-align: center;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .footer-description{
     flex: 1;
@@ -719,5 +721,22 @@
 .footer-links a:hover{
     text-decoration: underline;
 }
+
+.footer-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.footer-content h1{
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+.footer-content p{
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
 
 
