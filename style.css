@@ -456,6 +456,8 @@
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 20px;
+    padding: 20px;
+    text-align: center;
 }
 .team-member{
     background-color: #fff;
@@ -470,5 +472,64 @@
 }
 .team-member:hover{
     transform: scale(1.05);
+}
+.team-member img{
+    width: 100%;
+    height: 200px;
+    border-radius: 80%;
+    object-fit: cover;
+
+}
+.team-member h3{
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+.team-member p{
+    font-size: 1em;
+    color: #666;
+}
+.team-member .social-icons{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.social-icons a{
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+.social-icons a:hover{
+    color: #ff6347; /* Tomato color on hover */
+}
+
+
+
+/* contact us section stylews*/
+.contact-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 20px;
+    margin: 20px;
+    gap: 20px;
+    text-align: center;
+}
+.locaions{
+    flex: 1;
+    max-width: 400px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow:0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+.locaions h3{
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
 }
 
