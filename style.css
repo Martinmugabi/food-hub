@@ -96,14 +96,13 @@
     background-image: url('photos/Light bulb.jpg');
     background-size: cover;
     height: 100vh;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: rgb(12, 12, 12);
     text-align: center;
     padding: 20px;
-    display: flex;
-    
+
+
 }
 .pp1{
     font-size: 2.5em;
@@ -448,3 +447,28 @@
     font-size: 1em;
     color: #666;
 }
+
+
+
+/* team container styles */
+.team-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.team-member{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.team-member:hover{
+    transform: scale(1.05);
+}
+
