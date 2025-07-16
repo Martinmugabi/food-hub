@@ -589,10 +589,12 @@
 
 /* testmonies stsyles */
 .testimonial-container{
- display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Creates columns that are at least 200px wide and flexible */
-  gap: 10px; /* Adds spacing between the grid items */
-
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
 }
 .testimonial-item{
     background-color: #fff;
@@ -639,10 +641,9 @@
 
 /* blogs section styles */
 .blog-container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Creates columns that are at least 200px wide and flexible */
+  gap: 10px; /* Adds spacing between the grid items */
 }
 .blog-item{
     background-color: #fff;
@@ -672,6 +673,17 @@
 .blog-item p{
     font-size: 1em;
     color: #666;
+}
+
+
+/* footer sytles*/
+.footer{
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 
