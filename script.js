@@ -1,19 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
+    const faqItems = document.querySelectorAll('.faq-item');
 
-    faqQuestions.forEach(question => {
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const toggleIcon = item.querySelector('.toggle-icon');
+
         question.addEventListener('click', () => {
-            const faqItem = question.parentElement;
-            const isActive = faqItem.classList.contains('active');
-
-            // Close all FAQs first (optional)
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
+            // Close all other FAQs
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+                    otherItem.querySelector('.toggle-icon').textContent = '+';
+                }
             });
 
-            // Open clicked FAQ if it was closed
-            if (!isActive) {
-                faqItem.classList.add('active');
+            // Toggle current FAQ
+            item.classList.toggle('active');
+            
+            if (item.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                toggleIcon.textContent = '×'; // Change to "×" when open
+            } else {
+                answer.style.maxHeight = '0';
+                toggleIcon.textContent = '+'; // Change back to "+" when closed
             }
         });
     });
