@@ -2,12 +2,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const faqQuestions = document.querySelectorAll('.faq-question');
 
     faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            const answer = this.nextElementSibling; // Get the next element (faq-answer)
-            if (answer.style.display === 'none' || answer.style.display === '') {
-                answer.style.display = 'block'; // Show the answer
-            } else {
-                answer.style.display = 'none'; // Hide the answer
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            const isActive = faqItem.classList.contains('active');
+
+            // Close all FAQs first (optional)
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Open clicked FAQ if it was closed
+            if (!isActive) {
+                faqItem.classList.add('active');
             }
         });
     });
