@@ -626,7 +626,7 @@
     color: #666;
 }
 
-
+./* faq-container styles */
 
 
 
@@ -640,7 +640,7 @@
 
 
 /* blogs section styles */
-.blog-container{
+.blog-containter{
     display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Creates columns that are at least 200px wide and flexible */
   gap: 10px; /* Adds spacing between the grid items */
