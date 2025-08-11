@@ -4,398 +4,1014 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--link to external css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Add this to your <head> -->
     <link rel="stylesheet" href="style.css">
-    <title>food-hubt</title>
+    <title>Food Hub - Delicious Food Delivery</title>
 </head>
 <body>
-          <header class="section" id="demo">
-            <div class="header">
+    <!-- Header Section -->
+    <header class="header-section" id="home">
+        <div class="container">
+            <div class="header-content">
                 <div class="logo">
-                    <h2>foodhub</h2>
+                    <h2>FoodHub</h2>
                 </div>
-                <div class="nav">
+                <nav class="nav">
                     <ul class="nav-list">
-                        <li><a href="#demo">Home</a></li>
-                        <li><a href="#demo2">About</a></li>
-                        <li><a href="#demo3">Services</a></li>
-                        <li><a href="#demo4">Contact</a></li>
-                        <li><a href="#demo5">Products</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
+                </nav>
+                <div class="header-buttons">
+                    <button class="btn btn-login">Login</button>
+                    <button class="btn btn-signup">Sign Up</button>
                 </div>
             </div>
-            <div class="header-buttons">
-                <button class="btn1">Login</button>
-                <button class="btn2">Sign Up</button>
-            </div>
-          </header>
-         
+        </div>
+    </header>
 
-         <section class="section" id="demo1">
-          <div  class="hero">
-            <h1 class="pp1">Welcome to Food Hub</h1>
-            <p class="pp2">Your one-stop destination for delicious food and exceptional service.</p>
-             <div class="button-container">
-                <button class="btn1">Order Now</button>
-              <a href=" viewmenu.html"><button class="btn2">View Menu</button></a>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to Food Hub</h1>
+                <p>Your one-stop destination for delicious food and exceptional service.</p>
+                <div class="button-container">
+                    <a href=" menu.html"><button class="btn btn-secondary">View Menu</button></a>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <p>24/7 Service</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users"></i>
+                        <p>Customer Satisfaction</p>
+                    </div>
+                    
+                </div>
             </div>
-           <div class="star-cards">
-            <div class="star-card">
-                <p class="pp3">24/7</p>
-                <h2>icon</h2>
-            </div>
-            <div class="star-card">
-                <p class="pp3">Customer</p>
-                <h2>icon</h2>
-            </div>
-            <div class="star-card">
-                <p class="pp3">expert</p>
-                <h2>icon</h2>
-            </div>
-           </div>
-          </div>
-            </section>
-          
-         <section class="section" id="demo2">
-            <div class="about-image-container">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
             <h2 class="section-title">About Us</h2>
-            <p class="pp2-about-us">We are dedicated to bringing you the best food experience with a wide variety of cuisines.</p>
-            <img src="photos\Me.886.jpg" alt="About Us Image" class="about-image">
-           
+            <p class="section-subtitle">We are dedicated to bringing you the best food experience with a wide variety of cuisines.</p>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="photos/Me.886.jpg " alt="About Food Hub">
+                </div>
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Founded in 2015, Food Hub has grown from a small local restaurant to a premier food delivery service serving thousands of happy customers daily. Our mission is to deliver delicious, high-quality food with exceptional service.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">5000+</span>
+                            <span class="stat-label">Happy Customers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Menu Items</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Expert Chefs</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </section>
+        </div>
+    </section>
 
-
-         <section class="section" id="demo3">
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
             <h2 class="section-title">Our Services</h2>
-           
-            <div class="service-container">
-                <div class="service-item">
-                    <img src="photos\Me.886.jpg" alt="Service Image 1">
+            <p class="section-subtitle">We offer a variety of services to meet your food needs</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
                     <h3>Home Delivery</h3>
-                    <p>Get your favorite meals delivered to your doorstep.</p>
+                    <p>Get your favorite meals delivered to your doorstep quickly and safely.</p>
                 </div>
-
-                <div class="service-item">
-                    <img src="photos\Me.886.jpg" alt="Service Image 2">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
                     <h3>Catering Services</h3>
-                    <p>We provide catering for all your events and parties.</p>
+                    <p>Professional catering for all your events, from small gatherings to large parties.</p>
                 </div>
-
-                <div class="service-item">
-                    <img src="photos\Me.886.jpg" alt="Service Image 3">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
                     <h3>Online Ordering</h3>
-                    <p>Order your meals online and enjoy hassle-free service.</p>
+                    <p>Easy and convenient online ordering system available 24/7.</p>
                 </div>
-
-                <div class="service-item">
-                    <img src="photos\Me.886.jpg" alt="Service Image 4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
                     <h3>Custom Meal Plans</h3>
-                    <p>We offer personalized meal plans to suit your dietary needs.</p>
+                    <p>Personalized meal plans tailored to your dietary needs and preferences.</p>
+                </div>
             </div>
-         </section>
+        </div>
+    </section>
 
-          <section class="section"id="demo4">
-            <h2 class="section-title">Top products</h2>
-             <div class="product-container" id="demo5">
-                <div class="product-item">
-                    <img src="photos\Me.886.jpg" alt="Product Image 1">
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+    <div class="container">
+        <h2 class="section-title">Top Products</h2>
+        <p class="section-subtitle">Our most popular menu items</p>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="photos/Me.886.jpg" alt="Delicious Pizza">
+                <div class="product-info">
                     <h3>Delicious Pizza</h3>
                     <p>Enjoy our freshly baked pizzas with a variety of toppings.</p>
-                    <button class="product-btn">check</button>
+                    <div class="product-footer">
+                        <span class="price">UGX 48,000</span>
+                        <button class="btn btn-small order-btn" 
+                                data-item="Delicious Pizza" 
+                                data-desc="Freshly baked pizza with variety of toppings" 
+                                data-price="48000" 
+                                data-img="photos/Me.886.jpg">
+                            Order Now
+                        </button>
+                    </div>
                 </div>
-
-                <div class="product-item">
-                    <img src="photos\Me.886.jpg" alt="Product Image 2">
-                    <h3>Healthy Salads</h3>
-                    <p>Try our refreshing salads made with the freshest ingredients.</p>
-                    <button class="product-btn">check</button>
-                </div>
-
-                <div class="product-item">
-                    <img src="photos\Me.886.jpg" alt="Product Image 3">
-                    <h3>Gourmet Burgers</h3>
-                    <p>Savor our gourmet burgers crafted to perfection.</p>
-                    <button class="product-btn">check</button>
-                </div>
-
-                <div class="product-item">
-                    <img src="photos\Me.886.jpg" alt="Product Image 4">
-                    <h3>Exotic Desserts</h3>
-                    <p>Indulge in our exotic desserts that will satisfy your sweet tooth.</p>
-                    <button class="product-btn">check</button>
-                </div>
-             </div>
-             
-    
-          
-      <section class="our portifiolio" id="demo6">
-        <h2 class="section-title">our portifiolio</h2>
-        <div class="portifolio-container">
-            <div class="portifolio-item">
-                <img src="photos\Me.886.jpg" alt="Portfolio Image 1">
-                <img src="photos\Me.886.jpg" alt="Portfolio Image 1">
-                <img src="photos\Me.886.jpg" alt="Portfolio Image 1">
-                <img src="photos\Me.886.jpg" alt="Portfolio Image 1">
-                <img src="photos\Me.886.jpg" alt="Portfolio Image 1">
-                <img src="photos\Me.886.jpg" alt="Portfolio Image 1">
-                <img src="photos\Me.886.jpg" alt="Portfolio Image 1">
-                <img src="photos\Me.886.jpg" alt="Portfolio Image 1">
-                
-
-
-            </div>
-        </div>
-      </section>
-        
-      <section class="section" id="demo7">
-        <h2 class="section-title">Best offers</h2>
-            <div class="offer-item">
-                <h3>Buy One Get One Free</h3>
-                <p>On selected items every Friday.</p>
-                <button class="offer-btn" id="offer">Order Now</button>
-            </div>
-            </div>
-      </section>
-
-         <section class="section"id=demo8>
-            <h2 class="section-title">featured treates</h2>
-            <div class="featured-container">
-                <div class="featured-item">
-                    <img src="photos\Me.886.jpg" alt="Featured Treat 1">
-                    <h3>Chocolate Cake</h3>
-                    <p>Rich and moist chocolate cake with creamy frosting.</p>
-                    <button class="featured-btn">Order Now</button>
-                </div>
-
-                <div class="featured-item">
-                    <img src="photos\Me.886.jpg" alt="Featured Treat 2">
-                    <h3>Fruit Tart</h3>
-                    <p>Delicious tart filled with fresh seasonal fruits.</p>
-                    <button class="featured-btn">Order Now</button>
-                </div>
-
-                <div class="featured-item">
-                    <img src="photos\Me.886.jpg" alt="Featured Treat 3">
-                    <h3>Cheesecake</h3>
-                    <p>Classic cheesecake with a buttery graham cracker crust.</p>
-                    <button class="featured-btn">Order Now</button>
-                </div>
-            </div>
-         </section>
-
-           <section class="section" id="demo8">
-        <h2 class="section-title">Special Events</h2>
-        <div class="event-container">
-            <div class="event-item">
-                <img src="photos\Me.886.jpg" alt="Event Image 1">
-                <h3>Food Festival</h3>
-                <p>Join us for a weekend of food, fun, and festivities!</p>
-            </div>
-
-            <div class="event-item">
-                <img src="photos\Me.886.jpg" alt="Event Image 2">
-                <h3>Cooking Classes</h3>
-                <p>Learn to cook your favorite dishes with our expert chefs.</p>
-            </div>
-
-            <div class="event-item">
-                <img src="photos\Me.886.jpg" alt="Event Image 3">
-                <h3>Wine Tasting</h3>
-                <p>Experience the finest wines paired with gourmet food.</p>
-            </div>
-        </div>
-           </section>
-          
-           <section class="section"id="demo9">
-            <h2 class="section-title">our team</h2>
-            <div class="team-container">
-                <div class="team-member">
-                    <img src="photos\Me.886.jpg" alt="Team Member 1">
-                    <h3>Chef John</h3>
-                    <p>Head Chef with over 10 years of experience in culinary arts.</p>
-                    <h1>social-icons</h1>
-                </div>
-
-                <div class="team-member">
-                    <img src="photos\Me.886.jpg" alt="Team Member 2">
-                    <h3>Sarah Smith</h3>
-                    <p>Customer Service Manager dedicated to providing the best service.</p>
-                    <h1>social-icons</h1>
-                </div>
-
-                <div class="team-member">
-                    <img src="photos\Me.886.jpg" alt="Team Member 3">
-                    <h3>Mike Johnson</h3>
-                    <p>Marketing Specialist focused on bringing our food to the world.</p>
-                    <h1>social-icons</h1>
-                </div>
-                <div class="team-member">
-                    <img src="photos/Me.886.jpg" alt="Team Member 4">
-                    <h3>Mike Johnson</h3>
-                    <p>Marketing Specialist focused on bringing our food to the world.</p>
-                    <h1>social-icons</h1>
-                </div>
-           </section>
-
-
-
-      <section class="section" id="demo8">
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-container" id="demo9">
-            <div class="locaions">
-                <h3>Our Locations</h3>
-                <p>Visit us at any of our locations:</p>
-                    <p>123 Food Street, Cityville</p>
-                    <p>456 Gourmet Avenue, Townsville</p>
-                    <p>789 Culinary Road, Villageburg</p>
             </div>
             
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-        </div>
-        </section>
-      
-
-      <section class="section" id="demo10">
-        <h2 class="section-title">Testmonies</h2>
-        <div class="testimonial-container">
-            <div class="testimonial-item">
-                <img src="photos\Me.886.jpg" alt="Testimonial Image">
-                <p>"The food was amazing! Best service ever!"</p>
-                <h4>- John Doe</h4>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="photos/Me.886.jpg" alt="Healthy Salads">
+                <div class="product-info">
+                    <h3>Healthy Salads</h3>
+                    <p>Try our refreshing salads made with the freshest ingredients.</p>
+                    <div class="product-footer">
+                        <span class="price">UGX 33,000</span>
+                        <button class="btn btn-small order-btn" 
+                                data-item="Healthy Salads" 
+                                data-desc="Refreshing salads with fresh ingredients" 
+                                data-price="33000" 
+                                data-img="photos/Me.886.jpg">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
             </div>
-
-            <div class="testimonial-item">
-                <img src="photos\Me.886.jpg" alt="Testimonial Image">
-
-                <p>"I love the variety of dishes available."</p>
-                <h4>- Jane Smith</h4>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="photos/Me.886.jpg" alt="Gourmet Burgers">
+                <div class="product-info">
+                    <h3>Gourmet Burgers</h3>
+                    <p>Savor our gourmet burgers crafted to perfection.</p>
+                    <div class="product-footer">
+                        <span class="price">UGX 41,000</span>
+                        <button class="btn btn-small order-btn" 
+                                data-item="Gourmet Burgers" 
+                                data-desc="Gourmet burgers crafted to perfection" 
+                                data-price="41000" 
+                                data-img="photos/Me.886.jpg">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
             </div>
-
-            <div class="testimonial-item">
-                <img src="photos\Me.886.jpg" alt="Testimonial Image">
-
-                <p>"Great experience, will definitely order again!"</p>
-                <h4>- Alice Johnson</h4>
-            </div>
-        </div>
-          
-
-             <section class="section" id="demo11">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-container">
-        <div class="faq-item">
-            <h3 class="faq-question">What are your delivery hours? <span class="toggle-icon">+</span></h3>
-            <div class="faq-answer">
-                <p>We deliver from 10 AM to 10 PM daily.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <h3 class="faq-question">Do you offer vegetarian options? <span class="toggle-icon">+</span></h3>
-            <div class="faq-answer">
-                <p>Yes, we have a wide range of vegetarian dishes available.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <h3 class="faq-question">Can I customize my order? <span class="toggle-icon">+</span></h3>
-            <div class="faq-answer">
-                <p>Absolutely! You can customize your order to suit your preferences.</p>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="images/dessert.jpg" alt="Exotic Desserts">
+                <div class="product-info">
+                    <h3>Exotic Desserts</h3>
+                    <p>Indulge in our exotic desserts that will satisfy your sweet tooth.</p>
+                    <div class="product-footer">
+                        <span class="price">UGX 26,000</span>
+                        <button class="btn btn-small order-btn" 
+                                data-item="Exotic Desserts" 
+                                data-desc="Exotic desserts to satisfy your sweet tooth" 
+                                data-price="26000" 
+                                data-img="images/dessert.jpg">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-        <section class="section"id="demo12">
-            <h2>blogs</h2>
-            <div class="blog-container">
-                <div class="blog-item">
-                    <img src="photos\Me.886.jpg" alt="Blog Image 1">
-                    <h3>Exploring Culinary Delights</h3>
-                    <p>Discover the latest trends in the culinary world.</p>
-                    <a href="#">see more</a>
+<!-- Order Modal -->
+<div class="modal-overlay" id="orderModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="order-process">
+            <!-- Step 1: Order Details -->
+            <div class="step active" id="step1">
+                <h2>Order Details</h2>
+                <div class="order-preview">
+                    <img id="orderImg" src="" alt="">
+                    <div>
+                        <h3 id="orderItem"></h3>
+                        <p id="orderDesc"></p>
+                        <p class="price" id="orderPrice"></p>
+                    </div>
                 </div>
-
-                <div class="blog-item">
-                    <img src="photos\Me.886.jpg" alt="Blog Image 2">
-                    <h3>Healthy Eating Tips</h3>
-                    <p>Learn how to maintain a balanced diet with our expert tips.</p>
-                    <a href="#">see more</a>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="orderQty" min="1" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Instructions</label>
+                        <textarea id="orderNotes" placeholder="Any allergies or special requests"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue to Delivery</button>
+                </form>
+            </div>
+            
+            <!-- Step 2: Delivery Info -->
+            <div class="step" id="step2">
+                <h2>Delivery Information</h2>
+                <form id="deliveryForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="deliveryName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="deliveryEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="deliveryPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <textarea id="deliveryAddress" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Date</label>
+                        <input type="date" id="deliveryDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <select id="paymentMethod" required>
+                            <option value="">Select payment</option>
+                            <option>Cash on Delivery</option>
+                            <option>Mobile Money</option>
+                            <option>Credit Card</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="placeOrder()">Place Order</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Step 3: Receipt -->
+            <div class="step" id="step3">
+                <h2>Order Confirmation</h2>
+                <div id="receiptContent" class="receipt">
+                    <!-- Receipt will be generated here -->
                 </div>
+                <button class="btn btn-success" onclick="downloadReceipt()">Download Receipt</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <div class="blog-item">
-                    <img src="photos\Me.886.jpg" alt="Blog Image 3">
-                    <h3>Seasonal Recipes</h3>
-                    <p>Try our delicious recipes that highlight seasonal ingredients.</p>
-                    <a href="#">see more</a>
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Portfolio</h2>
+            <p class="section-subtitle">A glimpse of our delicious creations</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="photos/roshan11.jpeg" alt="Food Item 1">
+                    <div class="portfolio-overlay">
+                        <h3>Italian Pasta</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src=" photos/roshan11.jpeg" alt="Food Item 2">
+                    <div class="portfolio-overlay">
+                        <h3>Grilled Salmon</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="photos/roshan11.jpeg" alt="Food Item 3">
+                    <div class="portfolio-overlay">
+                        <h3>Vegetable Stir Fry</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="photos/roshan11.jpeg" alt="Food Item 4">
+                    <div class="portfolio-overlay">
+                        <h3>Chocolate Cake</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="photos/roshan11.jpeg" alt="Food Item 5">
+                    <div class="portfolio-overlay">
+                        <h3>Sushi Platter</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="photos/roshan11.jpeg" alt="Food Item 6">
+                    <div class="portfolio-overlay">
+                        <h3>Fruit Parfait</h3>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers-section">
+        <div class="container">
+            <h2 class="section-title">Best Offers</h2>
+            <div class="offer-content">
+                <div class="offer-text">
+                    <h3>Buy One Get One Free</h3>
+                    <p>On selected items every Friday. Limited time offer!</p>
+                    <button class="btn btn-primary">Order Now</button>
+                </div>
+                <div class="offer-image">
+                    <img src=" photos/cool.jpg" alt="Special Offer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Treats Section -->
+           <section class="featured-section">
+    <div class="container">
+        <h2 class="section-title">Featured Treats</h2>
+        <p class="section-subtitle">Our special desserts that will delight your taste buds</p>
+        <div class="featured-grid">
+            <!-- Chocolate Cake Card -->
+            <div class="featured-card">
+                <img src="photos/cool.jpg" alt="Chocolate Cake">
+                <div class="featured-info">
+                    <h3>Chocolate Cake</h3>
+                    <p>Rich and moist chocolate cake with creamy frosting.</p>
+                    <div class="featured-footer">
+                        <span class="price">UGX 55,500</span>
+                        <button class="btn btn-small order-btn" 
+                                data-item="Chocolate Cake" 
+                                data-desc="Rich and moist chocolate cake with creamy frosting" 
+                                data-price="55500" 
+                                data-img="photos/cool.jpg">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fruit Tart Card -->
+            <div class="featured-card">
+                <img src="photos/good.jpg" alt="Fruit Tart">
+                <div class="featured-info">
+                    <h3>Fruit Tart</h3>
+                    <p>Delicious tart filled with fresh seasonal fruits.</p>
+                    <div class="featured-footer">
+                        <span class="price">UGX 37,000</span>
+                        <button class="btn btn-small order-btn" 
+                                data-item="Fruit Tart" 
+                                data-desc="Delicious tart filled with fresh seasonal fruits" 
+                                data-price="37000" 
+                                data-img="photos/good.jpg">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cheesecake Card -->
+            <div class="featured-card">
+                <img src="photos/best.jpg" alt="Cheesecake">
+                <div class="featured-info">
+                    <h3>Cheesecake</h3>
+                    <p>Classic cheesecake with a buttery graham cracker crust.</p>
+                    <div class="featured-footer">
+                        <span class="price">UGX 44,400</span>
+                        <button class="btn btn-small order-btn" 
+                                data-item="Cheesecake" 
+                                data-desc="Classic cheesecake with a buttery graham cracker crust" 
+                                data-price="44400" 
+                                data-img="photos/best.jpg">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Order Modal -->
+<div class="modal-overlay" id="orderModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="order-process">
+            <!-- Step 1: Order Details -->
+            <div class="step active" id="step1">
+                <h2>Order Details</h2>
+                <div class="order-preview">
+                    <img id="orderImg" src="" alt="">
+                    <div>
+                        <h3 id="orderItem"></h3>
+                        <p id="orderDesc"></p>
+                        <p class="price" id="orderPrice"></p>
+                    </div>
+                </div>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="orderQty" min="1" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Instructions</label>
+                        <textarea id="orderNotes" placeholder="Any allergies or special requests"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue to Delivery</button>
+                </form>
+            </div>
+            
+            <!-- Step 2: Delivery Info -->
+            <div class="step" id="step2">
+                <h2>Delivery Information</h2>
+                <form id="deliveryForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="deliveryName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="deliveryEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="deliveryPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <textarea id="deliveryAddress" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Date</label>
+                        <input type="date" id="deliveryDate" required>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="placeOrder()">Place Order</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Step 3: Receipt -->
+            <div class="step" id="step3">
+                <h2>Order Confirmation</h2>
+                <div id="receiptContent" class="receipt">
+                    <!-- Receipt will be generated here -->
+                </div>
+                <button class="btn btn-success" onclick="downloadReceipt()">Download Receipt</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <h2 class="section-title">Special Events</h2>
+            <p class="section-subtitle">Join us for these exciting upcoming events</p>
+            <div class="events-grid">
+                <div class="event-card">
+                    <img src=" photos/best.jpg" alt="Food Festival">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">June</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>Food Festival</h3>
+                        <p>Join us for a weekend of food, fun, and festivities!</p>
+                        <button class="btn-small" id="learnMoreBtn">Learn More</button>
+                    </div>
+                </div>
+                <!-- Promo Modal -->
+    <div class="modal-overlay" id="promoModal">
+        <div class="promo-modal">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947" alt="Food Festival Promo">
+            <div class="promo-content">
+                <h2>Annual Food Festival</h2>
+                <div class="promo-date">June 15-17, 2023</div>
+                <p>Experience the most delicious event of the year! Enjoy:</p>
+                <ul style="text-align: left; padding-left: 20px;">
+                    <li>50+ food vendors</li>
+                    <li>Live cooking shows</li>
+                    <li>Special discounts</li>
+                    <li>Family activities</li>
+                </ul>
+                <button class="close-btn" id="closeModalBtn">Got It!</button>
+            </div>
+        </div>
+    </div>
+    
+                <div class="event-card">
+    <img src="photos/good.jpg" alt="Cooking Classes">
+    <div class="event-date">
+        <span class="day">22</span>
+        <span class="month">June</span>
+    </div>
+    <div class="event-info">
+        <h3>Cooking Classes</h3>
+        <p>Learn to cook your favorite dishes with our expert chefs.</p>
+        <!-- Added ID to button -->
+        <button class="btn btn-small" id="registerCookingBtn">Register Now</button>
+    </div>
+</div>
+
+<!-- Cooking Class Modal (place before </body>) -->
+<div class="modal-overlay" id="cookingModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img src="photos/good.jpg" alt="Cooking Class" class="modal-image">
         
+        <div class="modal-details">
+            <h2><i class="fas fa-utensils"></i> Cooking Class</h2>
+            <p class="modal-date">June 22, 2023 | 2 Hours</p>
+            
+            <div class="class-highlights">
+                <h3>You'll learn to make:</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Authentic Italian pasta</li>
+                    <li><i class="fas fa-check"></i> French dessert techniques</li>
+                    <li><i class="fas fa-check"></i> Professional plating skills</li>
+                </ul>
+            </div>
+            
+            <form class="registration-form" id="cookingForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Select Time Slot</option>
+                        <option>10:00 AM - 12:00 PM</option>
+                        <option>2:00 PM - 4:00 PM</option>
+                        <option>6:00 PM - 8:00 PM</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-register">Confirm Registration ($49)</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+                
+                <div class="event-card">
+    <img src="photos/best.jpg" alt="Wine Tasting">
+    <div class="event-date">
+        <span class="day">30</span>
+        <span class="month">June</span>
+    </div>
+    <div class="event-info">
+        <h3>Wine Tasting</h3>
+        <p>Experience the finest wines paired with gourmet food.</p>
+        <button class="btn btn-small" id="wineTastingBtn">Book Now</button>
+    </div>
+</div>
+
+<!-- Wine Tasting Modal -->
+<div class="modal-overlay" id="wineModal">
+    <div class="promo-modal wine-modal">
+        <span class="close-modal">&times;</span>
+
         
-        <footer class="footer">
-             <div class="footer-description">
-                <h2>Food Hub</h2>
-                <p>Your one-stop destination for delicious food and exceptional service.</p>
-                <p>get in touch with us</p>
-                <button class="footer-btn">Contact Us</button>
-             </div><br><hr>
+        <div class="promo-content">
+            <h2><i class="fas fa-wine-glass-alt"></i> Premium Wine Tasting</h2>
+            <p class="event-date-modal">June 30, 2023 | 7:00 PM - 9:00 PM</p>
+            
+            <div class="event-details">
+                <h3>Event Highlights:</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> 15+ premium wine selections</li>
+                    <li><i class="fas fa-check-circle"></i> Expert sommelier guidance</li>
+                    <li><i class="fas fa-check-circle"></i> Gourmet food pairings</li>
+                    <li><i class="fas fa-check-circle"></i> Live jazz entertainment</li>
+                </ul>
+                
+                <div class="price-tag">
+                    <span class="price">$89</span>
+                    <span class="per-person">per person</span>
+                </div>
+            </div>
+            
+            <form class="booking-form" id="wineBookingForm">
+                <h3>Reserve Your Spot</h3>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Number of Guests</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5+ (Contact Us)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Special Requests (Allergies, etc.)"></textarea>
+                </div>
+                <button type="submit" class="btn-book-now">Complete Reservation</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <p class="section-subtitle">Meet the talented people behind Food Hub</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="photos/roshan11.jpeg" alt="Chef John">
+                    <div class="team-info">
+                        <h3>Chef John</h3>
+                        <p class="position">Head Chef</p>
+                        <p>With over 10 years of experience in culinary arts.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="photos/roshan11.jpeg" alt="Sarah Smith">
+                    <div class="team-info">
+                        <h3>Sarah Smith</h3>
+                        <p class="position">Customer Service Manager</p>
+                        <p>Dedicated to providing the best service.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="photos/roshan11.jpeg" alt="Mike Johnson">
+                    <div class="team-info">
+                        <h3>Mike Johnson</h3>
+                        <p class="position">Marketing Specialist</p>
+                        <p>Focused on bringing our food to the world.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="photos/roshan11.jpeg" alt="Lisa Chen">
+                    <div class="team-info">
+                        <h3>Lisa Chen</h3>
+                        <p class="position">Pastry Chef</p>
+                        <p>Creates our delicious desserts and baked goods.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <p class="section-subtitle">What our customers say about us</p>
+            <div class="testimonials-slider">
+                <div class="testimonial-card active">
+                    <img src=" photos/Me.886.jpg" alt="John Doe">
+                    <div class="testimonial-content">
+                        <p>"The food was amazing! Best service ever. I order from Food Hub at least twice a week now."</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>John Doe</h4>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="photos/Me.886.jpg" alt="Jane Smith">
+                    <div class="testimonial-content">
+                        <p>"I love the variety of dishes available. The quality is consistently excellent."</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Jane Smith</h4>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/customer3.jpg" alt="Alice Johnson">
+                    <div class="testimonial-content">
+                        <p>"Great experience, will definitely order again! The delivery is always on time."</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <h4>Alice Johnson</h4>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are your delivery hours?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We deliver from 10 AM to 10 PM daily, including weekends and holidays. Delivery times may vary slightly during peak hours or extreme weather conditions.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer vegetarian options?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have a wide range of vegetarian dishes available. You can filter our menu by dietary preferences to find suitable options. We also offer vegan and gluten-free choices.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I customize my order?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! You can customize your order to suit your preferences. During checkout, you'll find options to add special instructions, remove ingredients, or make substitutions when available.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I track my order?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once your order is confirmed and dispatched, you'll receive a tracking link via SMS and email. You can also track your order in real-time through your account on our website or mobile app.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit/debit cards, PayPal, Apple Pay, Google Pay, and cash on delivery. All online payments are processed securely through our payment gateway.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Latest Blog Posts</h2>
+            <p class="section-subtitle">Discover food tips, recipes, and industry news</p>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="photos/roshan11.jpeg" alt="Culinary Delights">
+                    <div class="blog-date">
+                        <span class="day">12</span>
+                        <span class="month">May</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Exploring Culinary Delights</h3>
+                        <p>Discover the latest trends in the culinary world and how they're influencing modern dining experiences.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src=" photos/good.jpg" alt="Healthy Eating">
+                    <div class="blog-date">
+                        <span class="day">28</span>
+                        <span class="month">April</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Healthy Eating Tips</h3>
+                        <p>Learn how to maintain a balanced diet with our expert tips for incorporating nutritious foods into your daily routine.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="photos/good.jpg" alt="Seasonal Recipes">
+                    <div class="blog-date">
+                        <span class="day">15</span>
+                        <span class="month">April</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Seasonal Recipes</h3>
+                        <p>Try our delicious recipes that highlight seasonal ingredients for maximum flavor and nutrition.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">We'd love to hear from you</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Our Locations</h3>
+                            <p>123 Food Street, Cityville</p>
+                            <p>456 Gourmet Avenue, Townsville</p>
+                            <p>789 Culinary Road, Villageburg</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                            <p>+1 (555) 987-6543</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@foodhub.com</p>
+                            <p>support@foodhub.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Opening Hours</h3>
+                            <p>Monday - Friday: 9am - 10pm</p>
+                            <p>Saturday - Sunday: 10am - 11pm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest updates, special offers, and delicious recipes straight to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="container">
             <div class="footer-content">
-                <h1>food hub</h1>
-                <div class="footer-log">
-                    <img src="photos\Me.886.jpg " width="100px" height="100px" alt="Food Hub Logo">
+                <div class="footer-about">
+                    <h3>Food Hub</h3>
+                    <p>Your one-stop destination for delicious food and exceptional service. We're committed to providing high-quality meals with outstanding customer service.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <div class="footer-links">
-                    <div class="grp1">
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#demo">Home</a></li>
-                        <li><a href="#demo2">About</a></li>
-                        <li><a href="#demo3">Services</a></li>
-                        <li><a href="#demo4">Contact</a></li>
-                        <li><a href="#demo5">Products</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
-                    </div>
-                    <div class="grp2">
-                    <ul>
-                        <li><a href="#demo6">Portfolio</a></li>
-                        <li><a href="#demo7">Offers</a></li>
-                        <li><a href="#demo8">Featured Treats</a></li>
-                        <li><a href="#demo9">logout</a></li>
-                        <li><a href="#demo10">help</a></li>
-                    </ul>
-                    </div>
                 </div>
-                
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Home Delivery</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Online Ordering</a></li>
+                        <li><a href="#">Meal Plans</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Food Street, Cityville</li>
+                        <li><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@foodhub.com</li>
+                    </ul>
+                </div>
             </div>
-            <div class="social-icons">
-                <p>Follow us on social media for the latest updates and offers.</p><hr>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-youtube"></i></a>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Food Hub. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
-                
-                <p>2023 Food Hub. All rights reserved.</p>
-            </div>
-        </footer>
-       
-    </body>
-    
-</html> 
- 
- 
- 
- 
- 
+        </div>
+    </footer>
 
-        
-          
-       
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
