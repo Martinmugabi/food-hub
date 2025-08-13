@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodHub Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #ff8e53;
+            --dark: #2f3542;
+            --light: #f1f2f6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h2 {
+            color: var(--dark);
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+        
+        /* Menu Panel */
+        .menu-panel {
+            width: 280px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            height: calc(100vh - 60px);
+            position: fixed;
+            top: 60px;
+            left: -280px;
+            transition: left 0.3s ease;
+            z-index: 99;
+            overflow-y: auto;
+        }
+        
+        .menu-panel.active {
+            left: 0;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .menu-categories {
+            padding: 20px 0;
+        }
+        
+        .category-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            color: var(--dark);
+            border-left: 4px solid transparent;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .category-btn i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        /* Products Display */
+        .products-display {
+            flex: 1;
+            padding: 20px;
+            margin-top: 60px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-info h3 {
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .product-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+        
+        .add-to-cart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background: #ff5252;
+        }
+        
+        .section-title {
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-size: 1.5rem;
+        }
+        
+        /* Initially hide all product sections */
+        .product-section {
+            display: none;
+        }
+        
+        .product-section.active {
+            display: block;
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cart-icon i {
+            font-size: 1.3rem;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--dark);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+        
+        /* Cart Panel */
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            z-index: 101;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-panel.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .cart-header h3 {
+            color: white;
+            margin: 0;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .cart-items {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+        
+        .quantity-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+        }
+        
+        .quantity-value {
+            margin: 0 10px;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        .remove-item {
+            color: #ff4757;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 15px;
+        }
+        
+        .cart-total {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9f9;
+        }
+        
+        .cart-total span {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .total-amount {
+            color: var(--primary);
+        }
+        
+        .checkout-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background: #ff5252;
+        }
+        
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 98;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .menu-panel {
+                width: 250px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .products-display {
+                padding: 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 15px;
+            }
+            
+            .product-image {
+                height: 140px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .product-info h3 {
+                font-size: 1rem;
+            }
+            
+            .product-info p {
+                font-size: 0.8rem;
+            }
+            
+            .price, .add-to-cart {
+                font-size: 0.85rem;
+            }
+            
+            .cart-panel {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <i class="fas fa-utensils"></i>
+            <h2><span>Food</span>Hub</h2>
+        </div>
+        <div></div> <!-- Empty div for alignment -->
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Left Menu Panel -->
+        <div class="menu-panel">
+            <div class="menu-categories">
+                <button class="category-btn active" onclick="showCategory('breakfast')">
+                    <i class="fas fa-sun"></i> Breakfast
+                </button>
+                
+                <button class="category-btn" onclick="showCategory('lunch')">
+                    <i class="fas fa-utensils"></i> Lunch
+                </button>
+                
+                <button class="category-btn" onclick="showCategory('dinner')">
+                    <i class="fas fa-moon"></i> Dinner
+                </button>
+                
+                <button class="category-btn" onclick="showCategory('snacks')">
+                    <i class="fas fa-cookie"></i> Snacks
+                </button>
+                
+                <button class="category-btn" onclick="showCategory('drinks')">
+                    <i class="fas fa-glass-whiskey"></i> Drinks
+                </button>
+                
+                <button class="category-btn" onclick="showCategory('juice')">
+                    <i class="fas fa-glass-cheers"></i> Juice
+                </button>
+                
+                <button class="category-btn" onclick="showCategory('payment')">
+                    <i class="fas fa-credit-card"></i> Payment
+                </button>
+                
+                <button class="category-btn" onclick="showCategory('delivery')">
+                    <i class="fas fa-truck"></i> Delivery
+                </button>
+            </div>
+        </div>
+        
+        <!-- Products Display Area -->
+        <div class="products-display">
+            <!-- Breakfast Section -->
+            <div id="breakfast" class="product-section active">
+                <h2 class="section-title">Breakfast Menu</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1550583724-b2692b85b150')"></div>
+                        <div class="product-info">
+                            <h3>Pancake Stack</h3>
+                            <p>Fluffy pancakes with maple syrup and berries</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 25,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1484723091739-30a097e8f929')"></div>
+                        <div class="product-info">
+                            <h3>Full English</h3>
+                            <p>Eggs, bacon, sausages, beans, and toast</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 35,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1525354459829-27fcaa3bcef5')"></div>
+                        <div class="product-info">
+                            <h3>Avocado Toast</h3>
+                            <p>Sourdough bread with smashed avocado</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 22,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f')"></div>
+                        <div class="product-info">
+                            <h3>French Toast</h3>
+                            <p>Golden brown toast with cinnamon and syrup</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 18,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061')"></div>
+                        <div class="product-info">
+                            <h3>Breakfast Burrito</h3>
+                            <p>Scrambled eggs, beans and cheese in tortilla</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 26,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff')"></div>
+                        <div class="product-info">
+                            <h3>Greek Yogurt Parfait</h3>
+                            <p>Yogurt with granola and mixed berries</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 20,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1559847844-5315695dadae')"></div>
+                        <div class="product-info">
+                            <h3>Eggs Benedict</h3>
+                            <p>Poached eggs on English muffin with hollandaise</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 32,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543')"></div>
+                        <div class="product-info">
+                            <h3>Breakfast Sandwich</h3>
+                            <p>Egg, cheese and bacon on croissant</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 24,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c')"></div>
+                        <div class="product-info">
+                            <h3>Oatmeal Bowl</h3>
+                            <p>Steel-cut oats with nuts and honey</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 16,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lunch Section -->
+            <div id="lunch" class="product-section">
+                <h2 class="section-title">Lunch Menu</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38')"></div>
+                        <div class="product-info">
+                            <h3>Pasta Carbonara</h3>
+                            <p>Creamy pasta with bacon and parmesan</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 30,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1565958011703-44f9829ba187')"></div>
+                        <div class="product-info">
+                            <h3>Gourmet Burger</h3>
+                            <p>Beef patty with cheese and special sauce</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 28,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd')"></div>
+                        <div class="product-info">
+                            <h3>Caesar Salad</h3>
+                            <p>Romaine lettuce, croutons and parmesan</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 22,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947')"></div>
+                        <div class="product-info">
+                            <h3>Grilled Salmon</h3>
+                            <p>With roasted vegetables and lemon</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 45,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1563379926898-05f4575a45d8')"></div>
+                        <div class="product-info">
+                            <h3>Chicken Wrap</h3>
+                            <p>Grilled chicken with veggies in tortilla</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 25,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1565299507177-b0ac66763828')"></div>
+                        <div class="product-info">
+                            <h3>Margherita Pizza</h3>
+                            <p>Classic tomato and mozzarella pizza</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 38,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1559847844-5315695dadae')"></div>
+                        <div class="product-info">
+                            <h3>Beef Steak</h3>
+                            <p>Tender beef with mashed potatoes</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 55,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Vegetable Stir Fry</h3>
+                            <p>Mixed vegetables with tofu and rice</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 28,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554')"></div>
+                        <div class="product-info">
+                            <h3>Chicken Curry</h3>
+                            <p>Spicy curry with basmati rice</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 32,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1473093295043-cdd812d0e601')"></div>
+                        <div class="product-info">
+                            <h3>Club Sandwich</h3>
+                            <p>Triple decker with turkey and bacon</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 26,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Snacks Section -->
+            <div id="snacks" class="product-section">
+                <h2 class="section-title">Snacks Menu</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb')"></div>
+                        <div class="product-info">
+                            <h3>French Fries</h3>
+                            <p>Crispy golden fries with ketchup</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 12,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Onion Rings</h3>
+                            <p>Crispy battered onion rings</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 14,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Mozzarella Sticks</h3>
+                            <p>Breaded cheese sticks with marinara</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 18,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Chicken Wings</h3>
+                            <p>6 pieces with choice of sauce</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 22,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Nachos</h3>
+                            <p>Tortilla chips with cheese and salsa</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 20,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Garlic Bread</h3>
+                            <p>Toasted bread with garlic butter</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 10,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Samosa</h3>
+                            <p>Spiced potato filled pastry</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 8,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Spring Rolls</h3>
+                            <p>Crispy vegetable rolls with dip</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 15,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Potato Wedges</h3>
+                            <p>Seasoned potato wedges</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 14,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950')"></div>
+                        <div class="product-info">
+                            <h3>Popcorn Chicken</h3>
+                            <p>Bite-sized crispy chicken</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 18,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Drinks Section -->
+            <div id="drinks" class="product-section">
+                <h2 class="section-title">Drinks Menu</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>Coca Cola</h3>
+                            <p>330ml can</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 5,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>Sprite</h3>
+                            <p>330ml can</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 5,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>Fanta</h3>
+                            <p>330ml can</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 5,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>Pepsi</h3>
+                            <p>330ml can</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 5,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>Mountain Dew</h3>
+                            <p>330ml can</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 5,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>7Up</h3>
+                            <p>330ml can</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 5,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>Mirinda</h3>
+                            <p>330ml can</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 5,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>Schweppes</h3>
+                            <p>330ml can</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 6,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>Mineral Water</h3>
+                            <p>500ml bottle</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 3,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd')"></div>
+                        <div class="product-info">
+                            <h3>Tonic Water</h3>
+                            <p>330ml bottle</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 6,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Juice Section -->
+            <div id="juice" class="product-section">
+                <h2 class="section-title">Juice Menu</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Orange Juice</h3>
+                            <p>Freshly squeezed orange juice</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 12,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Mango Juice</h3>
+                            <p>Fresh mango puree with water</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 12,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Pineapple Juice</h3>
+                            <p>Fresh pineapple juice with mint</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 12,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Passion Fruit Juice</h3>
+                            <p>Tangy passion fruit nectar</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 14,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Watermelon Juice</h3>
+                            <p>Refreshing watermelon blend</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 10,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Apple Juice</h3>
+                            <p>100% pure apple juice</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 12,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Strawberry Juice</h3>
+                            <p>Sweet strawberry blend</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 15,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Avocado Smoothie</h3>
+                            <p>Creamy avocado with milk</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 16,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Mixed Fruit Juice</h3>
+                            <p>Seasonal fruits blend</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 14,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a')"></div>
+                        <div class="product-info">
+                            <h3>Lemonade</h3>
+                            <p>Fresh lemon with sugar and water</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 8,000</span>
+                                <button class="add-to-cart">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Section -->
+            <div id="payment" class="product-section">
+                <h2 class="section-title">Payment Methods</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                            <i class="fas fa-money-bill-wave" style="font-size: 3rem; color: #666;"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Cash on Delivery</h3>
+                            <p>Pay when your order arrives</p>
+                            <div class="product-footer">
+                                <button class="add-to-cart">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                            <i class="fas fa-mobile-alt" style="font-size: 3rem; color: #666;"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Mobile Money</h3>
+                            <p>Pay via MTN or Airtel Money</p>
+                            <div class="product-footer">
+                                <button class="add-to-cart">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Delivery Section -->
+            <div id="delivery" class="product-section">
+                <h2 class="section-title">Delivery Options</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                            <i class="fas fa-biking" style="font-size: 3rem; color: #666;"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Standard Delivery</h3>
+                            <p>Delivery within 60 minutes</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 5,000</span>
+                                <button class="add-to-cart">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                            <i class="fas fa-bolt" style="font-size: 3rem; color: #666;"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Express Delivery</h3>
+                            <p>Delivery within 30 minutes</p>
+                            <div class="product-footer">
+                                <span class="price">UGX 10,000</span>
+                                <button class="add-to-cart">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cart Icon -->
+    <div class="cart-icon" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </div>
+    
+    <!-- Cart Panel -->
+    <div class="cart-panel">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will appear here -->
+        </div>
+        <div class="cart-total">
+            <span>Total: UGX <span class="total-amount">0</span></span>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="overlay" onclick="closeAllPanels()"></div>
+    
+    <script>
+        // Cart data
+        let cart = [];
+        let total = 0;
+        
+        // Toggle menu panel
+        function toggleMenu() {
+            document.querySelector('.menu-panel').classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('active');
+        }
+        
+        // Show category
+        function showCategory(categoryId) {
+            // Hide all product sections
+            document.querySelectorAll('.product-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(categoryId).classList.add('active');
+            
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Close menu on mobile
+            if (window.innerWidth <= 768) {
+                toggleMenu();
+            }
+        }
+        
+        // Toggle cart visibility
+        function toggleCart() {
+            document.querySelector('.cart-panel').classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('active');
+        }
+        
+        // Close all panels
+        function closeAllPanels() {
+            document.querySelector('.menu-panel').classList.remove('active');
+            document.querySelector('.cart-panel').classList.remove('active');
+            document.querySelector('.overlay').classList.remove('active');
+        }
+        
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const productPrice = parseFloat(productCard.querySelector('.price').textContent.replace(/[^0-9.]/g, ''));
+                
+                // Check if item already exists in cart
+                const existingItem = cart.find(item => item.name === productName);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        name: productName,
+                        price: productPrice,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.textContent = `${productName} added to cart!`;
+                successMsg.style.position = 'fixed';
+                successMsg.style.bottom = '100px';
+                successMsg.style.right = '20px';
+                successMsg.style.backgroundColor = 'var(--primary)';
+                successMsg.style.color = 'white';
+                successMsg.style.padding = '10px 15px';
+                successMsg.style.borderRadius = '4px';
+                successMsg.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+                successMsg.style.zIndex = '1000';
+                successMsg.style.animation = 'fadeInOut 3s forwards';
+                
+                document.body.appendChild(successMsg);
+                
+                setTimeout(() => {
+                    document.body.removeChild(successMsg);
+                }, 3000);
+            });
+        });
+        
+        // Update cart display
+        function updateCart() {
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const cartCount = document.querySelector('.cart-count');
+            const totalAmount = document.querySelector('.total-amount');
+            
+            // Clear cart items
+            cartItemsContainer.innerHTML = '';
+            
+            // Reset total
+            total = 0;
+            
+            // Add each item to cart display
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">UGX ${item.price.toLocaleString()}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                            <span class="quantity-value">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item" onclick="removeItem(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            // Update cart count and total
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            totalAmount.textContent = total.toLocaleString();
+        }
+        
+        // Change item quantity
+        function changeQuantity(index, change) {
+            const newQuantity = cart[index].quantity + change;
+            
+            if (newQuantity < 1) {
+                removeItem(index);
+            } else {
+                cart[index].quantity = newQuantity;
+                updateCart();
+            }
+        }
+        
+        // Remove item from cart
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+        
+        // Initialize cart
+        updateCart();
+        
+        // Add animation style
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateY(20px); }
+                10% { opacity: 1; transform: translateY(0); }
+                90% { opacity: 1; transform: translateY(0); }
+                100% { opacity: 0; transform: translateY(20px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
