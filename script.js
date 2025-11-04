@@ -782,3 +782,158 @@ function downloadReceipt() {
         alert("Could not generate receipt. Please try again or contact support.");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+// Mobile Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Menu Tabs Functionality
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons and contents
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        // Show corresponding content
+        const tabId = btn.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+    });
+});
+
+// Testimonial Slider
+const testimonials = document.querySelectorAll('.testimonial');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+let currentTestimonial = 0;
+
+function showTestimonial(index) {
+    testimonials.forEach(testimonial => {
+        testimonial.classList.remove('active');
+    });
+    
+    testimonials[index].classList.add('active');
+    currentTestimonial = index;
+}
+
+prevBtn.addEventListener('click', () => {
+    let index = currentTestimonial - 1;
+    if (index < 0) {
+        index = testimonials.length - 1;
+    }
+    showTestimonial(index);
+});
+
+nextBtn.addEventListener('click', () => {
+    let index = currentTestimonial + 1;
+    if (index >= testimonials.length) {
+        index = 0;
+    }
+    showTestimonial(index);
+});
+
+// Auto-rotate testimonials
+setInterval(() => {
+    let index = currentTestimonial + 1;
+    if (index >= testimonials.length) {
+        index = 0;
+    }
+    showTestimonial(index);
+}, 5000);
+
+// Quote Form Submission
+const quoteForm = document.getElementById('quoteForm');
+
+quoteForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    // In a real application, you would send this data to a server
+    // For demonstration, we'll just show an alert
+    alert(`Thank you ${data.name}! Your catering quote request has been submitted. We will contact you at ${data.email} within 24 hours.`);
+    
+    // Reset form
+    this.reset();
+});
+
+// Date validation - prevent past dates
+const dateInput = document.getElementById('date');
+const today = new Date().toISOString().split('T')[0];
+dateInput.setAttribute('min', today);
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Add animation on scroll
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.service-card, .menu-item, .gallery-item, .payment-method');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+}
+
+// Set initial state for animation
+document.querySelectorAll('.service-card, .menu-item, .gallery-item, .payment-method').forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(20px)';
+    element.style.transition = 'opacity 0.5s, transform 0.5s';
+});
+
+// Listen for scroll events
+window.addEventListener('scroll', animateOnScroll);
+
+// Trigger once on page load
+window.addEventListener('load', animateOnScroll);

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catering Services - FoodHub</title>
+     <!-- Add this to your <head> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2>FoodHub</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="meals.html">Meal Planning</a></li>
+                    <li><a href="delivery.html">Home Delivery</a></li>
+                    <li><a href="catering.html" class="active">Catering</a></li>
+                    <li><a href="giftcards.html">Gift Cards</a></li>
+                    <li><a href="ordering.html">Online Ordering</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Catering Services</h1>
+            <p>Creating unforgettable culinary experiences for your special events</p>
+            <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Our Catering Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-ring"></i>
+                    <h3>Weddings</h3>
+                    <p>Elegant wedding receptions with customized menus and professional service</p>
+                    <ul>
+                        <li>Custom menu planning</li>
+                        <li>Wedding cake services</li>
+                        <li>Full-service catering staff</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Corporate Events</h3>
+                    <p>Professional catering for meetings, conferences, and corporate gatherings</p>
+                    <ul>
+                        <li>Breakfast & lunch meetings</li>
+                        <li>Conference catering</li>
+                        <li>Office parties</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h3>Private Parties</h3>
+                    <p>Intimate gatherings and celebrations with personalized menu options</p>
+                    <ul>
+                        <li>Birthday celebrations</li>
+                        <li>Anniversary parties</li>
+                        <li>Family reunions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <div class="container">
+            <h2>Catering Menu Options</h2>
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-tab="buffet">Buffet Style</button>
+                <button class="tab-btn" data-tab="plated">Plated Service</button>
+                <button class="tab-btn" data-tab="stations">Food Stations</button>
+                <button class="tab-btn" data-tab="cocktail">Cocktail Parties</button>
+            </div>
+            
+            <div class="tab-content active" id="buffet">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h4>Classic Buffet</h4>
+                        <p>Self-service buffet with 3 main courses, 4 sides, and 2 dessert options</p>
+                        <span class="price">Starting at UGX 95,000/person</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Premium Buffet</h4>
+                        <p>Enhanced buffet with 4 main courses, 6 sides, and chef-attended carving station</p>
+                        <span class="price">Starting at UGX 130,000/person</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>International Buffet</h4>
+                        <p>Global cuisine featuring dishes from Italian, Asian, and Mexican traditions</p>
+                        <span class="price">Starting at UGX 115,000/person</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="plated">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h4>Standard Plated</h4>
+                        <p>3-course plated dinner with choice of entrée served by professional waitstaff</p>
+                        <span class="price">Starting at UGX 150,000/person</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Executive Plated</h4>
+                        <p>4-course gourmet experience with amuse-bouche and intermezzo course</p>
+                        <span class="price">Starting at UGX 205,000/person</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="stations">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h4>Pasta Station</h4>
+                        <p>Fresh pasta prepared to order with choice of sauces and toppings</p>
+                        <span class="price">Starting at UGX 85,000/person</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Carving Station</h4>
+                        <p>Premium meats carved to order by our expert chefs</p>
+                        <span class="price">Starting at UGX 120,000/person</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Dessert Station</h4>
+                        <p>Interactive dessert experience with mini pastries, crepes, and chocolate fountain</p>
+                        <span class="price">Starting at UGX 75,000/person</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="cocktail">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h4>Classic Cocktail</h4>
+                        <p>Assorted passed hors d'oeuvres and stationary displays</p>
+                        <span class="price">Starting at UGX 65,000/person</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Premium Cocktail</h4>
+                        <p>Enhanced selection with premium ingredients and action stations</p>
+                        <span class="price">Starting at UGX 95,000/person</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2>Our Catering Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Wedding Catering">
+                    <div class="gallery-overlay">
+                        <h4>Wedding Reception</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Corporate Event">
+                    <div class="gallery-overlay">
+                        <h4>Corporate Event</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Buffet Setup">
+                    <div class="gallery-overlay">
+                        <h4>Buffet Setup</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Food Stations">
+                    <div class="gallery-overlay">
+                        <h4>Food Stations</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote" id="quote">
+        <div class="container">
+            <h2>Request a Catering Quote</h2>
+            <p>Fill out the form below and we'll get back to you within 24 hours with a customized quote</p>
+            
+            <form class="quote-form" id="quoteForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-type">Event Type</label>
+                    <select id="event-type" name="event-type" required>
+                        <option value="">Select Event Type</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="birthday">Birthday Party</option>
+                        <option value="anniversary">Anniversary</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <input type="number" id="guests" name="guests" min="10" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Event Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">Budget per Person (UGX)</label>
+                    <select id="budget" name="budget" required>
+                        <option value="">Select Budget Range</option>
+                        <option value="50000-80000">UGX 50,000 - 80,000</option>
+                        <option value="80000-120000">UGX 80,000 - 120,000</option>
+                        <option value="120000-180000">UGX 120,000 - 180,000</option>
+                        <option value="180000+">UGX 180,000+</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="message">Additional Details</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us about your event, dietary restrictions, or special requests..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Request Quote</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <p>"FoodHub catered our wedding and everything was perfect! The food was delicious, the service was impeccable, and our guests are still talking about it weeks later."</p>
+                    <div class="client">
+                        <h4>Sarah & James K.</h4>
+                        <span>Kampala Wedding</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"We've used FoodHub for three corporate events now, and they consistently deliver exceptional quality and service. Their team is professional and easy to work with."</p>
+                    <div class="client">
+                        <h4>Michael T.</h4>
+                        <span>Corporate Client</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"The international buffet was a hit at our anniversary party! The variety and quality of food exceeded our expectations. Highly recommend!"</p>
+                    <div class="client">
+                        <h4>Grace N.</h4>
+                        <span>50th Anniversary</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-nav">
+                <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment">
+        <div class="container">
+            <h2>Payment Options</h2>
+            <p>We accept multiple payment methods for your convenience. All prices are in Ugandan Shillings (UGX).</p>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Mobile Money</h4>
+                    <p>MTN Mobile Money & Airtel Money</p>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-university"></i>
+                    <h4>Bank Transfer</h4>
+                    <p>Direct bank transfer to our account</p>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-credit-card"></i>
+                    <h4>Credit/Debit Card</h4>
+                    <p>Visa, MasterCard & American Express</p>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h4>Cash Payment</h4>
+                    <p>Pay in person at our offices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FoodHub Catering</h3>
+                    <p>Creating memorable culinary experiences for all your special events in Uganda.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="meals.html">Meal Planning</a></li>
+                        <li><a href="delivery.html">Home Delivery</a></li>
+                        <li><a href="catering.html">Catering</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot 45, Kampala Road, Kampala</p>
+                    <p><i class="fas fa-phone"></i> +256 700 123 456</p>
+                    <p><i class="fas fa-envelope"></i> catering@foodhub.ug</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FoodHub Uganda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="catering.js"></script>
+</body>
+</html>
