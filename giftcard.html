@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Cards - FoodHub</title>
+     <!-- Add this to your <head> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2>FoodHub</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="meals.html">Meal Planning</a></li>
+                    <li><a href="delivery.html">Home Delivery</a></li>
+                    <li><a href="catering.html">Catering</a></li>
+                    <li><a href="giftcards.html" class="active">Gift Cards</a></li>
+                    <li><a href="ordering.html">Online Ordering</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>FoodHub Gift Cards</h1>
+            <p>The perfect gift for food lovers - delicious meals, unforgettable experiences</p>
+            <a href="#gift-cards" class="btn btn-primary">Buy Gift Card</a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Why Choose FoodHub Gift Cards?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Perfect for Any Occasion</h3>
+                    <p>Birthdays, holidays, thank you gifts, or just because - our gift cards are always appreciated</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Multiple Redemption Options</h3>
+                    <p>Use for meal delivery, catering services, or online ordering - the choice is theirs</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <h3>Never Expires</h3>
+                    <p>Our gift cards have no expiration date, giving recipients plenty of time to enjoy their gift</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant Delivery</h3>
+                    <p>Email delivery available instantly or schedule for a special date</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Cards Section -->
+    <section class="gift-cards" id="gift-cards">
+        <div class="container">
+            <h2>Choose Your Gift Card</h2>
+            <p class="section-subtitle">Select from our popular denominations or choose a custom amount</p>
+            
+            <div class="gift-cards-grid">
+                <div class="gift-card-option" data-amount="50000">
+                    <div class="gift-card-preview">
+                        <div class="gift-card-front">
+                            <div class="gift-card-logo">
+                                <h3>FoodHub</h3>
+                                <span>Gift Card</span>
+                            </div>
+                            <div class="gift-card-amount">
+                                UGX 50,000
+                            </div>
+                            <div class="gift-card-decoration">
+                                <i class="fas fa-utensils"></i>
+                                <i class="fas fa-pizza-slice"></i>
+                                <i class="fas fa-ice-cream"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gift-card-details">
+                        <h4>UGX 50,000 Gift Card</h4>
+                        <p>Perfect for a family dinner or multiple meals</p>
+                        <button class="btn btn-select" data-amount="50000">Select This Card</button>
+                    </div>
+                </div>
+
+                <div class="gift-card-option" data-amount="100000">
+                    <div class="gift-card-preview">
+                        <div class="gift-card-front popular">
+                            <div class="popular-badge">Most Popular</div>
+                            <div class="gift-card-logo">
+                                <h3>FoodHub</h3>
+                                <span>Gift Card</span>
+                            </div>
+                            <div class="gift-card-amount">
+                                UGX 100,000
+                            </div>
+                            <div class="gift-card-decoration">
+                                <i class="fas fa-wine-bottle"></i>
+                                <i class="fas fa-cheese"></i>
+                                <i class="fas fa-bread-slice"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gift-card-details">
+                        <h4>UGX 100,000 Gift Card</h4>
+                        <p>Great for special occasions or catering services</p>
+                        <button class="btn btn-select" data-amount="100000">Select This Card</button>
+                    </div>
+                </div>
+
+                <div class="gift-card-option" data-amount="200000">
+                    <div class="gift-card-preview">
+                        <div class="gift-card-front premium">
+                            <div class="gift-card-logo">
+                                <h3>FoodHub</h3>
+                                <span>Gift Card</span>
+                            </div>
+                            <div class="gift-card-amount">
+                                UGX 200,000
+                            </div>
+                            <div class="gift-card-decoration">
+                                <i class="fas fa-crown"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-gem"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gift-card-details">
+                        <h4>UGX 200,000 Gift Card</h4>
+                        <p>Premium experience - perfect for weddings or corporate gifts</p>
+                        <button class="btn btn-select" data-amount="200000">Select This Card</button>
+                    </div>
+                </div>
+
+                <div class="gift-card-option custom-amount">
+                    <div class="gift-card-preview">
+                        <div class="gift-card-front custom">
+                            <div class="gift-card-logo">
+                                <h3>FoodHub</h3>
+                                <span>Gift Card</span>
+                            </div>
+                            <div class="gift-card-amount">
+                                Custom
+                            </div>
+                            <div class="gift-card-decoration">
+                                <i class="fas fa-pen"></i>
+                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-feather"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gift-card-details">
+                        <h4>Custom Amount</h4>
+                        <p>Choose any amount between UGX 25,000 and UGX 500,000</p>
+                        <div class="custom-amount-input">
+                            <label for="customAmount">Enter Amount (UGX):</label>
+                            <input type="number" id="customAmount" min="25000" max="500000" placeholder="e.g., 75000">
+                        </div>
+                        <button class="btn btn-select-custom">Select Custom Amount</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purchase Form Section -->
+    <section class="purchase-form" id="purchaseForm">
+        <div class="container">
+            <h2>Purchase Gift Card</h2>
+            <div class="form-container">
+                <div class="form-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <span>Gift Card Amount:</span>
+                            <span id="summaryAmount">UGX 0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Service Fee:</span>
+                            <span id="summaryFee">UGX 0</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Total:</span>
+                            <span id="summaryTotal">UGX 0</span>
+                        </div>
+                    </div>
+                    <div class="gift-card-preview-summary">
+                        <div class="gift-card-front summary">
+                            <div class="gift-card-logo">
+                                <h3>FoodHub</h3>
+                                <span>Gift Card</span>
+                            </div>
+                            <div class="gift-card-amount" id="previewAmount">
+                                UGX 0
+                            </div>
+                            <div class="gift-card-code">
+                                Code: <span id="previewCode">XXXX-XXXX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="gift-card-form" id="giftCardForm">
+                    <div class="form-section">
+                        <h3>Recipient Information</h3>
+                        <div class="form-group">
+                            <label for="recipientName">Recipient Name *</label>
+                            <input type="text" id="recipientName" name="recipientName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipientEmail">Recipient Email *</label>
+                            <input type="email" id="recipientEmail" name="recipientEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Personal Message (Optional)</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Add a personal message for the recipient..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryDate">Delivery Date</label>
+                            <input type="date" id="deliveryDate" name="deliveryDate">
+                            <small>Leave empty for immediate delivery</small>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Your Information</h3>
+                        <div class="form-group">
+                            <label for="yourName">Your Name *</label>
+                            <input type="text" id="yourName" name="yourName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="yourEmail">Your Email *</label>
+                            <input type="email" id="yourEmail" name="yourEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="yourPhone">Your Phone *</label>
+                            <input type="tel" id="yourPhone" name="yourPhone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Payment Information</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <input type="radio" id="mobileMoney" name="paymentMethod" value="mobileMoney" checked>
+                                <label for="mobileMoney">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    Mobile Money
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="creditCard" name="paymentMethod" value="creditCard">
+                                <label for="creditCard">
+                                    <i class="fas fa-credit-card"></i>
+                                    Credit/Debit Card
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="bankTransfer" name="paymentMethod" value="bankTransfer">
+                                <label for="bankTransfer">
+                                    <i class="fas fa-university"></i>
+                                    Bank Transfer
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-purchase" disabled>
+                            <i class="fas fa-lock"></i>
+                            Complete Purchase - <span id="purchaseTotal">UGX 0</span>
+                        </button>
+                        <p class="security-note">
+                            <i class="fas fa-shield-alt"></i>
+                            Your payment information is secure and encrypted
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How do I redeem a FoodHub gift card?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can redeem your gift card during checkout on our website or mobile app. Simply enter the gift card code in the payment section, and the amount will be applied to your order.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do gift cards expire?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, FoodHub gift cards never expire. The recipient can use them whenever they're ready to enjoy our services.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I use multiple gift cards on one order?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can apply multiple gift cards to a single order during checkout. If the total exceeds your order amount, the remaining balance will stay on the gift cards for future use.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What if I lose my gift card?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you have the gift card code or purchase receipt, please contact our customer service team at gifts@foodhub.ug. We can help recover your gift card balance.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I get a refund for my gift card?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Gift cards are non-refundable. However, they never expire and can be transferred to someone else if you're unable to use them.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Are there any restrictions on gift card usage?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Gift cards can be used for all FoodHub services including meal delivery, catering, and online ordering. They cannot be exchanged for cash.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Gifting -->
+    <section class="corporate-gifting">
+        <div class="container">
+            <div class="corporate-content">
+                <div class="corporate-text">
+                    <h2>Corporate Gifting Solutions</h2>
+                    <p>Looking for the perfect way to appreciate employees, reward clients, or celebrate company milestones? FoodHub corporate gift cards are the ideal solution.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Bulk discounts available</li>
+                        <li><i class="fas fa-check"></i> Custom branding options</li>
+                        <li><i class="fas fa-check"></i> Flexible denominations</li>
+                        <li><i class="fas fa-check"></i> Dedicated account management</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-corporate">Contact Corporate Sales</a>
+                </div>
+                <div class="corporate-image">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Corporate Gifting">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FoodHub Gift Cards</h3>
+                    <p>The perfect gift for every food lover in Uganda. Delicious experiences await!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="meals.html">Meal Planning</a></li>
+                        <li><a href="delivery.html">Home Delivery</a></li>
+                        <li><a href="giftcards.html">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Gift Card Support</h4>
+                    <ul>
+                        <li><a href="#">Check Balance</a></li>
+                        <li><a href="#">Redeem Card</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot 45, Kampala Road, Kampala</p>
+                    <p><i class="fas fa-phone"></i> +256 700 123 456</p>
+                    <p><i class="fas fa-envelope"></i> gifts@foodhub.ug</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FoodHub Uganda. All rights reserved. Gift cards are subject to terms and conditions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Gift Card Purchase Successful!</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>Your gift card has been purchased successfully and will be delivered to the recipient.</p>
+                <div class="gift-card-details-modal">
+                    <div class="gift-card-front modal-card">
+                        <div class="gift-card-logo">
+                            <h3>FoodHub</h3>
+                            <span>Gift Card</span>
+                        </div>
+                        <div class="gift-card-amount" id="modalAmount">
+                            UGX 0
+                        </div>
+                        <div class="gift-card-code">
+                            Code: <span id="modalCode">XXXX-XXXX</span>
+                        </div>
+                        <div class="gift-card-recipient">
+                            To: <span id="modalRecipient">Recipient Name</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="modal-note">The gift card code has been sent to the recipient's email. You will also receive a confirmation email with these details.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-done">Done</button>
+                <button class="btn btn-print">Print Receipt</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="giftcards.js"></script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Ordering - FoodHub</title>
+     <!-- Add this to your <head> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2>FoodHub</h2>
+                    <span class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="meals.html">Meal Planning</a></li>
+                    <li><a href="delivery.html">Home Delivery</a></li>
+                    <li><a href="catering.html">Catering</a></li>
+                    <li><a href="giftcards.html">Gift Cards</a></li>
+                    <li><a href="ordering.html" class="active">Online Ordering</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Order Food Online</h1>
+            <p>Fresh, delicious meals delivered to your doorstep in Kampala</p>
+            <div class="search-box">
+                <input type="text" placeholder="Search for dishes, cuisines...">
+                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2>Popular Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="ugandan">
+                    <img src="https://images.unsplash.com/photo-1598511759667-d5f654a129a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ugandan Cuisine">
+                    <h4>Ugandan Dishes</h4>
+                </div>
+                <div class="category-card" data-category="continental">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Continental">
+                    <h4>Continental</h4>
+                </div>
+                <div class="category-card" data-category="asian">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Asian Cuisine">
+                    <h4>Asian Fusion</h4>
+                </div>
+                <div class="category-card" data-category="vegetarian">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vegetarian">
+                    <h4>Vegetarian</h4>
+                </div>
+                <div class="category-card" data-category="desserts">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Desserts">
+                    <h4>Desserts</h4>
+                </div>
+                <div class="category-card" data-category="beverages">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Beverages">
+                    <h4>Beverages</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <div class="container">
+            <div class="menu-header">
+                <h2>Our Menu</h2>
+                <div class="menu-filters">
+                    <button class="filter-btn active" data-filter="all">All Items</button>
+                    <button class="filter-btn" data-filter="ugandan">Ugandan</button>
+                    <button class="filter-btn" data-filter="continental">Continental</button>
+                    <button class="filter-btn" data-filter="asian">Asian</button>
+                    <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+                    <button class="filter-btn" data-filter="desserts">Desserts</button>
+                    <button class="filter-btn" data-filter="beverages">Beverages</button>
+                </div>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Ugandan Dishes -->
+                <div class="menu-item" data-category="ugandan">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1598511759667-d5f654a129a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Matoke">
+                        <span class="veg-nonveg nonveg"></span>
+                    </div>
+                    <div class="item-details">
+                        <h4>Matoke with Groundnut Sauce</h4>
+                        <p>Steamed green bananas served with rich groundnut sauce and fresh vegetables</p>
+                        <div class="item-price">UGX 18,000</div>
+                        <div class="item-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.5</span>
+                            <span class="rating-count">(128)</span>
+                        </div>
+                        <button class="btn btn-add" data-item="Matoke with Groundnut Sauce" data-price="18000">
+                            <i class="fas fa-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="ugandan">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Rolex">
+                        <span class="veg-nonveg nonveg"></span>
+                    </div>
+                    <div class="item-details">
+                        <h4>Chicken Rolex</h4>
+                        <p>Ugandan street food favorite - chapati rolled with eggs, chicken, and vegetables</p>
+                        <div class="item-price">UGX 12,000</div>
+                        <div class="item-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.7</span>
+                            <span class="rating-count">(256)</span>
+                        </div>
+                        <button class="btn btn-add" data-item="Chicken Rolex" data-price="12000">
+                            <i class="fas fa-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="ugandan">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Luwombo">
+                        <span class="veg-nonveg nonveg"></span>
+                    </div>
+                    <div class="item-details">
+                        <h4>Chicken Luwombo</h4>
+                        <p>Traditional steamed chicken in banana leaves with smoked spices</p>
+                        <div class="item-price">UGX 22,000</div>
+                        <div class="item-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.6</span>
+                            <span class="rating-count">(89)</span>
+                        </div>
+                        <button class="btn btn-add" data-item="Chicken Luwombo" data-price="22000">
+                            <i class="fas fa-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Continental Dishes -->
+                <div class="menu-item" data-category="continental">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Grilled Chicken">
+                        <span class="veg-nonveg nonveg"></span>
+                    </div>
+                    <div class="item-details">
+                        <h4>Grilled Chicken Breast</h4>
+                        <p>Juicy chicken breast with herb butter, roasted vegetables, and mashed potatoes</p>
+                        <div class="item-price">UGX 25,000</div>
+                        <div class="item-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.4</span>
+                            <span class="rating-count">(167)</span>
+                        </div>
+                        <button class="btn btn-add" data-item="Grilled Chicken Breast" data-price="25000">
+                            <i class="fas fa-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="continental">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Beef Burger">
+                        <span class="veg-nonveg nonveg"></span>
+                    </div>
+                    <div class="item-details">
+                        <h4>Classic Beef Burger</h4>
+                        <p>100% beef patty with cheese, lettuce, tomato, and special sauce</p>
+                        <div class="item-price">UGX 16,000</div>
+                        <div class="item-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.5</span>
+                            <span class="rating-count">(203)</span>
+                        </div>
+                        <button class="btn btn-add" data-item="Classic Beef Burger" data-price="16000">
+                            <i class="fas fa-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Asian Dishes -->
+                <div class="menu-item" data-category="asian">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Chicken Curry">
+                        <span class="veg-nonveg nonveg"></span>
+                    </div>
+                    <div class="item-details">
+                        <h4>Chicken Curry</h4>
+                        <p>Fragrant Indian-style chicken curry with basmati rice and naan bread</p>
+                        <div class="item-price">UGX 20,000</div>
+                        <div class="item-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.6</span>
+                            <span class="rating-count">(142)</span>
+                        </div>
+                        <button class="btn btn-add" data-item="Chicken Curry" data-price="20000">
+                            <i class="fas fa-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vegetarian Dishes -->
+                <div class="menu-item" data-category="vegetarian">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vegetable Salad">
+                        <span class="veg-nonveg veg"></span>
+                    </div>
+                    <div class="item-details">
+                        <h4>Fresh Garden Salad</h4>
+                        <p>Mixed greens with cherry tomatoes, cucumber, olives, and balsamic dressing</p>
+                        <div class="item-price">UGX 12,000</div>
+                        <div class="item-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.3</span>
+                            <span class="rating-count">(98)</span>
+                        </div>
+                        <button class="btn btn-add" data-item="Fresh Garden Salad" data-price="12000">
+                            <i class="fas fa-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-item" data-category="desserts">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Chocolate Cake">
+                        <span class="veg-nonveg veg"></span>
+                    </div>
+                    <div class="item-details">
+                        <h4>Chocolate Lava Cake</h4>
+                        <p>Warm chocolate cake with molten center, served with vanilla ice cream</p>
+                        <div class="item-price">UGX 9,000</div>
+                        <div class="item-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.8</span>
+                            <span class="rating-count">(312)</span>
+                        </div>
+                        <button class="btn btn-add" data-item="Chocolate Lava Cake" data-price="9000">
+                            <i class="fas fa-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Beverages -->
+                <div class="menu-item" data-category="beverages">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Fresh Juice">
+                        <span class="veg-nonveg veg"></span>
+                    </div>
+                    <div class="item-details">
+                        <h4>Fresh Passion Juice</h4>
+                        <p>Freshly squeezed passion fruit juice, served chilled</p>
+                        <div class="item-price">UGX 6,000</div>
+                        <div class="item-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.5</span>
+                            <span class="rating-count">(187)</span>
+                        </div>
+                        <button class="btn btn-add" data-item="Fresh Passion Juice" data-price="6000">
+                            <i class="fas fa-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+            <div class="empty-cart" id="emptyCart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <p>Add some delicious items!</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">UGX 0</span>
+            </div>
+            <div class="cart-total">
+                <span>Delivery Fee:</span>
+                <span id="deliveryFee">UGX 3,000</span>
+            </div>
+            <div class="cart-total grand-total">
+                <span>Total:</span>
+                <span id="cartTotal">UGX 3,000</span>
+            </div>
+            <button class="btn btn-checkout" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Delivery Info Section -->
+    <section class="delivery-info">
+        <div class="container">
+            <h2>Delivery Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Delivery Areas</h4>
+                    <p>We deliver across Kampala including Nakasero, Kololo, Bukoto, and surrounding areas</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Delivery Time</h4>
+                    <p>30-45 minutes delivery time. Free delivery on orders above UGX 50,000</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h4>Payment Options</h4>
+                    <p>Cash on delivery, Mobile Money, or Credit Card payments accepted</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FoodHub Delivery</h3>
+                    <p>Fresh, delicious meals delivered to your doorstep in Kampala</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="meals.html">Meal Planning</a></li>
+                        <li><a href="delivery.html">Home Delivery</a></li>
+                        <li><a href="ordering.html">Online Ordering</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot 45, Kampala Road, Kampala</p>
+                    <p><i class="fas fa-phone"></i> +256 700 123 456</p>
+                    <p><i class="fas fa-envelope"></i> orders@foodhub.ug</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Opening Hours</h4>
+                    <p>Monday - Sunday: 7:00 AM - 11:00 PM</p>
+                    <p>Last order: 10:30 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FoodHub Uganda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="ordering.js"></script>
+</body>
+</html>
