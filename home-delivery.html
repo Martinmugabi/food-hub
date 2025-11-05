@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Delivery - FoodHub</title>
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-utensils"></i>
+            <h2><span>Food</span>Hub</h2>
+            <a href="index.html"><button class="back-btn">BACK TO HOME</button></a>
+        </div>
+        <div class="nav-links">
+            <a href="home-delivery.html" class="active">Home Delivery</a>
+            <a href="online-ordering.html">Online Ordering</a>
+            <a href="gift-cards.html">Gift Cards</a>
+            <a href="catering.html">Catering</a>
+            <a href="meal-planning.html">Meal Planning</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <h1>Home Delivery Service</h1>
+        <p>Fast, reliable delivery straight to your doorstep. Track your order in real-time!</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="service-content">
+        <!-- Delivery Location Section -->
+        <section class="service-section">
+            <h2>Set Your Delivery Location</h2>
+            <p>Drag the marker to your exact location or allow us to detect your location automatically.</p>
+            
+            <div class="map-container">
+                <div id="deliveryMap">
+                    <!-- Map will be loaded here -->
+                    <div style="padding: 40px; text-align: center; color: #666;">
+                        <i class="fas fa-map-marker-alt" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                        <p>Map loading... Ensure you have a Google Maps API key configured.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" id="latitude" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" id="longitude" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Delivery Address</label>
+                <textarea id="address" rows="3" placeholder="Enter your complete delivery address"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="deliveryInstructions">Delivery Instructions (Optional)</label>
+                <textarea id="deliveryInstructions" rows="2" placeholder="e.g., Gate code, floor number, etc."></textarea>
+            </div>
+        </section>
+
+        <!-- Delivery Fee Section -->
+        <section class="service-section">
+            <h2>Delivery Information</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Delivery Time</h3>
+                    <p>30-45 minutes</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Delivery Fee</h3>
+                    <p id="deliveryFee">UGX 5,000</p>
+                    <small>Calculated based on your location</small>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-biking"></i>
+                    <h3>Free Delivery</h3>
+                    <p>On orders over UGX 100,000</p>
+                </div>
+            </div>
+
+            <button class="btn btn-success" onclick="calculateDeliveryFeeFromLocation()">
+                <i class="fas fa-calculator"></i> Calculate Delivery Fee
+            </button>
+        </section>
+
+        <!-- Order Tracking Section -->
+        <section class="service-section">
+            <h2>Track Your Order</h2>
+            <div class="form-group">
+                <label for="orderNumber">Order Number</label>
+                <input type="text" id="orderNumber" placeholder="Enter your order number">
+            </div>
+            <button class="btn">
+                <i class="fas fa-search"></i> Track Order
+            </button>
+        </section>
+
+        <!-- Delivery Feedback Section -->
+        <section class="service-section">
+            <h2>Delivery Feedback</h2>
+            <p>Help us improve our service by providing feedback on your delivery experience.</p>
+            
+            <div class="feedback-section">
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label>How was your delivery experience?</label>
+                        <select id="deliveryExperience" required>
+                            <option value="">Select your experience</option>
+                            <option value="excellent">Excellent</option>
+                            <option value="good">Good</option>
+                            <option value="average">Average</option>
+                            <option value="poor">Poor</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rate your delivery</label>
+                        <div class="rating-stars">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" id="rating" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Additional Comments</label>
+                        <textarea id="comments" rows="4" placeholder="Tell us about your experience..."></textarea>
+                    </div>
+
+                    <button type="button" class="btn" onclick="submitFeedback()">
+                        <i class="fas fa-paper-plane"></i> Submit Feedback
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Company Info -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Food<span>Hub</span></h3>
+                </div>
+                <p class="footer-description">
+                    Delivering delicious meals with love and care. Your satisfaction is our top priority. 
+                    Experience the best food delivery service in town.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="menu.html"><i class="fas fa-utensils"></i> Our Menu</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-section">
+                <h4 class="footer-title">Our Services</h4>
+                <ul class="footer-links">
+                    <li><a href="home-delivery.html"><i class="fas fa-motorcycle"></i> Home Delivery</a></li>
+                    <li><a href="online-ordering.html"><i class="fas fa-laptop"></i> Online Ordering</a></li>
+                    <li><a href="catering.html"><i class="fas fa-utensil-spoon"></i> Catering</a></li>
+                    <li><a href="meal-planning.html"><i class="fas fa-clipboard-list"></i> Meal Planning</a></li>
+                    <li><a href="gift-cards.html"><i class="fas fa-gift"></i> Gift Cards</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h4 class="footer-title">Contact Info</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>123 Food Street</p>
+                            <p>Kampala, Uganda</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+256 712 345 678</p>
+                            <p>+256 789 012 345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@foodhub.com</p>
+                            <p>support@foodhub.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <p>Mon - Sun: 7:00 AM - 11:00 PM</p>
+                            <p>24/7 Online Orders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-section">
+                <h4 class="footer-title">Newsletter</h4>
+                <p class="newsletter-text">Subscribe to get updates on new offers and promotions</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="payment-methods">
+                    <p>We Accept:</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fab fa-cc-paypal" title="PayPal"></i>
+                        <i class="fas fa-mobile-alt" title="Mobile Money"></i>
+                        <i class="fas fa-money-bill-wave" title="Cash"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="footer-bottom-left">
+                    <p>&copy; 2024 FoodHub. All rights reserved.</p>
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </footer>
+
+    <script src="services.js"></script>
+    <!-- Google Maps API (Add your API key) -->
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script> -->
+</body>
+</html>

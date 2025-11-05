@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Cards - FoodHub</title>
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-utensils"></i>
+            <h2><span>Food</span>Hub</h2>
+            <a href="index.html"><button class="back-btn">BACK TO HOME</button></a>
+        </div>
+        <div class="nav-links">
+            <a href="home-delivery.html">Home Delivery</a>
+            <a href="online-ordering.html">Online Ordering</a>
+            <a href="gift-cards.html" class="active">Gift Cards</a>
+            <a href="catering.html">Catering</a>
+            <a href="meal-planning.html">Meal Planning</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <h1>FoodHub Gift Cards</h1>
+        <p>The perfect gift for food lovers - Share the joy of great meals!</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="service-content">
+        <!-- Weekend Gift Program -->
+        <section class="service-section">
+            <h2>Weekend Gift Card Program</h2>
+            <p>Earn gift cards based on your spending and loyalty. Special weekend bonuses available!</p>
+            
+            <div class="gift-card">
+                <div class="gift-card-content">
+                    <h3>Your Gift Card Progress</h3>
+                    <p id="progressText">Progress: 0%</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="giftCardProgress" style="width: 0%"></div>
+                    </div>
+                    <p>Spend more to unlock your next gift card!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gift Card Options -->
+        <section class="service-section">
+            <h2>Choose Your Gift Card</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <h3>Basic Card</h3>
+                    <div class="session-price">UGX 50,000</div>
+                    <p>Perfect for trying new dishes</p>
+                    <button class="btn" onclick="purchaseGiftCard('basic', 50000)">Purchase</button>
+                </div>
+                <div class="feature-card">
+                    <h3>Premium Card</h3>
+                    <div class="session-price">UGX 100,000</div>
+                    <p>Great for special occasions</p>
+                    <button class="btn" onclick="purchaseGiftCard('premium', 100000)">Purchase</button>
+                </div>
+                <div class="feature-card">
+                    <h3>Deluxe Card</h3>
+                    <div class="session-price">UGX 200,000</div>
+                    <p>Ultimate dining experience</p>
+                    <button class="btn" onclick="purchaseGiftCard('deluxe', 200000)">Purchase</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Gift Card -->
+        <section class="service-section">
+            <h2>Create Custom Gift Card</h2>
+            <form id="customGiftCardForm">
+                <div class="form-group">
+                    <label for="cardAmount">Card Amount (UGX)</label>
+                    <input type="number" id="cardAmount" min="20000" max="500000" value="50000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipientName">Recipient Name</label>
+                    <input type="text" id="recipientName" placeholder="Enter recipient's name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipientEmail">Recipient Email</label>
+                    <input type="email" id="recipientEmail" placeholder="Enter recipient's email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="giftMessage">Personal Message</label>
+                    <textarea id="giftMessage" rows="3" placeholder="Add a personal message..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="cardDesign">Card Design</label>
+                    <select id="cardDesign">
+                        <option value="classic">Classic Red</option>
+                        <option value="elegant">Elegant Gold</option>
+                        <option value="festive">Festive Theme</option>
+                        <option value="custom">Custom Design</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-success" onclick="createCustomGiftCard()">
+                    <i class="fas fa-gift"></i> Create Gift Card
+                </button>
+            </form>
+        </section>
+
+        <!-- Loyalty Rewards -->
+        <section class="service-section">
+            <h2>Loyalty Rewards System</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <i class="fas fa-calendar-week"></i>
+                    <h3>Weekend Bonuses</h3>
+                    <p>Earn double points on weekends</p>
+                    <p><strong>Friday - Sunday</strong></p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h3>Birthday Rewards</h3>
+                    <p>Special gift card on your birthday</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Referral Program</h3>
+                    <p>Get UGX 10,000 for each friend referral</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gift Card Status -->
+        <section class="service-section">
+            <h2>Check Gift Card Balance</h2>
+            <div class="form-group">
+                <label for="giftCardNumber">Gift Card Number</label>
+                <input type="text" id="giftCardNumber" placeholder="Enter 16-digit card number" required>
+            </div>
+            <div class="form-group">
+                <label for="pinCode">PIN Code</label>
+                <input type="password" id="pinCode" placeholder="Enter 4-digit PIN" required>
+            </div>
+            <button class="btn" onclick="checkGiftCardBalance()">
+                <i class="fas fa-search"></i> Check Balance
+            </button>
+
+            <div id="balanceResult" style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px; display: none;">
+                <h4>Card Balance</h4>
+                <p id="balanceAmount" style="font-size: 1.5rem; color: var(--primary); font-weight: bold;"></p>
+                <p id="expiryDate" style="color: #666;"></p>
+            </div>
+        </section>
+
+        <!-- Terms and Conditions -->
+        <section class="service-section">
+            <h2>Terms & Conditions</h2>
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 8px;">
+                <h4>Gift Card Policy</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="padding: 5px 0;">✓ Valid for 12 months from purchase date</li>
+                    <li style="padding: 5px 0;">✓ Redeemable for food, drinks, and catering services</li>
+                    <li style="padding: 5px 0;">✓ Not redeemable for cash</li>
+                    <li style="padding: 5px 0;">✓ Weekend bonuses apply to orders over UGX 30,000</li>
+                    <li style="padding: 5px 0;">✓ Lost cards can be replaced with proof of purchase</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Company Info -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Food<span>Hub</span></h3>
+                </div>
+                <p class="footer-description">
+                    Delivering delicious meals with love and care. Your satisfaction is our top priority. 
+                    Experience the best food delivery service in town.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="menu.html"><i class="fas fa-utensils"></i> Our Menu</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-section">
+                <h4 class="footer-title">Our Services</h4>
+                <ul class="footer-links">
+                    <li><a href="home-delivery.html"><i class="fas fa-motorcycle"></i> Home Delivery</a></li>
+                    <li><a href="online-ordering.html"><i class="fas fa-laptop"></i> Online Ordering</a></li>
+                    <li><a href="catering.html"><i class="fas fa-utensil-spoon"></i> Catering</a></li>
+                    <li><a href="meal-planning.html"><i class="fas fa-clipboard-list"></i> Meal Planning</a></li>
+                    <li><a href="gift-cards.html"><i class="fas fa-gift"></i> Gift Cards</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h4 class="footer-title">Contact Info</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>123 Food Street</p>
+                            <p>Kampala, Uganda</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+256 712 345 678</p>
+                            <p>+256 789 012 345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@foodhub.com</p>
+                            <p>support@foodhub.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <p>Mon - Sun: 7:00 AM - 11:00 PM</p>
+                            <p>24/7 Online Orders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-section">
+                <h4 class="footer-title">Newsletter</h4>
+                <p class="newsletter-text">Subscribe to get updates on new offers and promotions</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="payment-methods">
+                    <p>We Accept:</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fab fa-cc-paypal" title="PayPal"></i>
+                        <i class="fas fa-mobile-alt" title="Mobile Money"></i>
+                        <i class="fas fa-money-bill-wave" title="Cash"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="footer-bottom-left">
+                    <p>&copy; 2024 FoodHub. All rights reserved.</p>
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </footer>
+
+    <script src="services.js"></script>
+    <script>
+        // Gift card specific functions
+        function purchaseGiftCard(type, amount) {
+            if (confirm(`Purchase ${type} gift card for UGX ${amount.toLocaleString()}?`)) {
+                // Simulate purchase process
+                const giftCardData = {
+                    type: type,
+                    amount: amount,
+                    cardNumber: 'GC' + Date.now(),
+                    pin: Math.floor(1000 + Math.random() * 9000),
+                    expiry: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+                };
+
+                // Store in localStorage
+                let giftCards = JSON.parse(localStorage.getItem('giftCards') || '[]');
+                giftCards.push(giftCardData);
+                localStorage.setItem('giftCards', JSON.stringify(giftCards));
+
+                alert(`Gift card purchased successfully!\nCard Number: ${giftCardData.cardNumber}\nPIN: ${giftCardData.pin}\nExpiry: ${giftCardData.expiry}`);
+            }
+        }
+
+        function createCustomGiftCard() {
+            const amount = document.getElementById('cardAmount').value;
+            const recipient = document.getElementById('recipientName').value;
+            
+            if (!validateForm('customGiftCardForm')) {
+                return;
+            }
+
+            const customCard = {
+                amount: parseInt(amount),
+                recipient: recipient,
+                message: document.getElementById('giftMessage').value,
+                design: document.getElementById('cardDesign').value,
+                date: new Date().toISOString()
+            };
+
+            // Store custom card
+            let customCards = JSON.parse(localStorage.getItem('customGiftCards') || '[]');
+            customCards.push(customCard);
+            localStorage.setItem('customGiftCards', JSON.stringify(customCards));
+
+            alert(`Custom gift card created for ${recipient}! An email has been sent with the digital card.`);
+            document.getElementById('customGiftCardForm').reset();
+        }
+
+        function checkGiftCardBalance() {
+            const cardNumber = document.getElementById('giftCardNumber').value;
+            const pin = document.getElementById('pinCode').value;
+
+            if (!cardNumber || !pin) {
+                alert('Please enter both card number and PIN');
+                return;
+            }
+
+            // Simulate balance check
+            const balance = Math.floor(Math.random() * 100000) + 10000;
+            const expiry = new Date(Date.now() + Math.random() * 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+            document.getElementById('balanceAmount').textContent = `UGX ${balance.toLocaleString()}`;
+            document.getElementById('expiryDate').textContent = `Expires: ${expiry}`;
+            document.getElementById('balanceResult').style.display = 'block';
+        }
+
+        // Initialize gift card progress
+        document.addEventListener('DOMContentLoaded', function() {
+            updateGiftCardProgress();
+        });
+    </script>
+</body>
+</html>

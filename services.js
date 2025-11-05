@@ -273,3 +273,49 @@ window.subscribeToMealPlan = subscribeToMealPlan;
 window.validateForm = validateForm;
 window.submitFeedback = submitFeedback;
 window.calculateDeliveryFeeFromLocation = calculateDeliveryFeeFromLocation;
+
+
+
+
+
+
+
+// Additional functions for the new pages
+function trackUserVisits() {
+    let userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    
+    // Track total visits
+    userData.totalVisits = (userData.totalVisits || 0) + 1;
+    
+    // Track last visit
+    userData.lastVisit = new Date().toISOString();
+    
+    // Track visit days
+    const today = new Date().toLocaleDateString();
+    if (!userData.visitDays) userData.visitDays = [];
+    if (!userData.visitDays.includes(today)) {
+        userData.visitDays.push(today);
+    }
+    
+    localStorage.setItem('userData', JSON.stringify(userData));
+    return userData;
+}
+
+function calculateWeekendBonus(totalSpent, visits) {
+    const weekendMultiplier = 1.5; // 50% bonus on weekends
+    const visitBonus = visits * 0.02; // 2% per visit
+    return (totalSpent * weekendMultiplier) + (totalSpent * visitBonus);
+}
+
+// Initialize all services
+document.addEventListener('DOMContentLoaded', function() {
+    trackUserVisits();
+    
+    // Update gift card progress if on gift cards page
+    if (document.getElementById('giftCardProgress')) {
+        updateGiftCardProgress();
+    }
+    
+    // Initialize any other page-specific functionality
+    console.log('FoodHub Services initialized');
+});

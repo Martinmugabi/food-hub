@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planning - FoodHub</title>
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-utensils"></i>
+            <h2><span>Food</span>Hub</h2>
+            <a href="index.html"><button class="back-btn">BACK TO HOME</button></a>
+        </div>
+        <div class="nav-links">
+            <a href="home-delivery.html">Home Delivery</a>
+            <a href="online-ordering.html">Online Ordering</a>
+            <a href="gift-cards.html">Gift Cards</a>
+            <a href="catering.html">Catering</a>
+            <a href="meal-planning.html" class="active">Meal Planning</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <h1>Professional Meal Planning</h1>
+        <p>Customized meal solutions for organizations, schools, and families</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="service-content">
+        <!-- Meal Plan Options -->
+        <section class="service-section">
+            <h2>Choose Your Meal Plan</h2>
+            <div class="plan-cards">
+                <div class="plan-card">
+                    <h3>School Program</h3>
+                    <div class="plan-price">UGX 15,000<small>/student/week</small></div>
+                    <ul class="plan-features">
+                        <li>Nutritionally balanced meals</li>
+                        <li>Weekly menu rotation</li>
+                        <li>Dietary accommodation</li>
+                        <li>Quality certified ingredients</li>
+                        <li>Monthly nutrition reports</li>
+                    </ul>
+                    <button class="btn" onclick="subscribeToMealPlan('school', 'School Program', 15000)">Get Started</button>
+                </div>
+                
+                <div class="plan-card popular">
+                    <h3>Corporate Plan</h3>
+                    <div class="plan-price">UGX 25,000<small>/employee/week</small></div>
+                    <ul class="plan-features">
+                        <li>Daily lunch service</li>
+                        <li>Executive dining options</li>
+                        <li>Meeting catering included</li>
+                        <li>Health-conscious menus</li>
+                        <li>Digital ordering portal</li>
+                        <li>Monthly wellness seminars</li>
+                    </ul>
+                    <button class="btn btn-success" onclick="subscribeToMealPlan('corporate', 'Corporate Plan', 25000)">Get Started</button>
+                </div>
+                
+                <div class="plan-card">
+                    <h3>NGO/Organization</h3>
+                    <div class="plan-price">UGX 12,000<small>/person/week</small></div>
+                    <ul class="plan-features">
+                        <li>Cost-effective solutions</li>
+                        <li>Bulk ordering discounts</li>
+                        <li>Flexible delivery schedules</li>
+                        <li>Special event catering</li>
+                        <li>Nutrition education</li>
+                    </ul>
+                    <button class="btn" onclick="subscribeToMealPlan('ngo', 'NGO Plan', 12000)">Get Started</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Plan Builder -->
+        <section class="service-section">
+            <h2>Build Your Custom Plan</h2>
+            <form id="customPlanForm">
+                <div class="form-group">
+                    <label for="organizationType">Organization Type</label>
+                    <select id="organizationType" required>
+                        <option value="">Select type</option>
+                        <option value="school">School/University</option>
+                        <option value="corporate">Corporate Office</option>
+                        <option value="ngo">NGO/Non-profit</option>
+                        <option value="club">Social Club</option>
+                        <option value="residential">Residential Complex</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="peopleCount">Number of People</label>
+                        <input type="number" id="peopleCount" min="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mealsPerDay">Meals per Day</label>
+                        <select id="mealsPerDay" required>
+                            <option value="1">1 Meal</option>
+                            <option value="2">2 Meals</option>
+                            <option value="3">3 Meals</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="daysPerWeek">Days per Week</label>
+                        <select id="daysPerWeek" required>
+                            <option value="5">5 Days (Weekdays)</option>
+                            <option value="7">7 Days (Full Week)</option>
+                            <option value="3">3 Days (Custom)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Plan Duration</label>
+                        <select id="duration" required>
+                            <option value="4">1 Month</option>
+                            <option value="12">3 Months</option>
+                            <option value="24">6 Months</option>
+                            <option value="48">1 Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Dietary Requirements</label>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" name="dietary" value="vegetarian"> Vegetarian
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" name="dietary" value="vegan"> Vegan
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" name="dietary" value="halal"> Halal
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" name="dietary" value="gluten-free"> Gluten-free
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" name="dietary" value="dairy-free"> Dairy-free
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialRequirements">Special Requirements</label>
+                    <textarea id="specialRequirements" rows="3" placeholder="Any specific nutritional needs, allergies, or preferences..."></textarea>
+                </div>
+
+                <button type="button" class="btn btn-success" onclick="calculateCustomPlan()">
+                    <i class="fas fa-calculator"></i> Calculate Plan & Pricing
+                </button>
+            </form>
+
+            <div id="planCalculation" style="margin-top: 20px; padding: 20px; background: #f9f9f9; border-radius: 8px; display: none;">
+                <h4>Your Custom Plan Estimate</h4>
+                <p id="calculatedPrice" style="font-size: 1.5rem; color: var(--primary); font-weight: bold;"></p>
+                <p id="planDetails" style="color: #666;"></p>
+                <button class="btn" onclick="subscribeToCustomPlan()">Subscribe to This Plan</button>
+            </div>
+        </section>
+
+        <!-- Features for Organizations -->
+        <section class="service-section">
+            <h2>Why Choose Our Meal Planning?</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Nutrition Certified</h3>
+                    <p>All meals designed by certified nutritionists</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Fresh Ingredients</h3>
+                    <p>Locally sourced, fresh ingredients daily</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Timely Delivery</h3>
+                    <p>Punctual delivery to your location</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Progress Tracking</h3>
+                    <p>Monthly reports on nutrition and satisfaction</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Menu -->
+        <section class="service-section">
+            <h2>Sample Weekly Menu</h2>
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 8px;">
+                <h4>Corporate Plan - Week 1</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <h5>Monday</h5>
+                        <p>Grilled Chicken with Quinoa<br>Fresh Garden Salad<br>Fruit Parfait</p>
+                    </div>
+                    <div class="form-group">
+                        <h5>Tuesday</h5>
+                        <p>Beef Stir-fry with Rice<br>Steamed Vegetables<br>Yogurt</p>
+                    </div>
+                    <div class="form-group">
+                        <h5>Wednesday</h5>
+                        <p>Fish Fillet with Mashed Potatoes<br>Coleslaw<br>Fresh Juice</p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <h5>Thursday</h5>
+                        <p>Vegetable Curry with Rice<br>Chapati<br>Fruit Salad</p>
+                    </div>
+                    <div class="form-group">
+                        <h5>Friday</h5>
+                        <p>Pasta Carbonara<br>Garlic Bread<br>Chocolate Mousse</p>
+                    </div>
+                    <div class="form-group">
+                        <h5>Special</h5>
+                        <p>Weekly rotating specials<br>Cultural cuisine days<br>Seasonal favorites</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="service-section">
+            <h2>Schedule a Consultation</h2>
+            <p>Let our nutrition experts design the perfect meal plan for your organization</p>
+            
+            <div class="form-group">
+                <label for="contactName">Contact Person</label>
+                <input type="text" id="contactName" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone</label>
+                    <input type="tel" id="contactPhone" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="organizationName">Organization Name</label>
+                <input type="text" id="organizationName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="consultationNotes">Specific Requirements</label>
+                <textarea id="consultationNotes" rows="4" placeholder="Tell us about your organization's specific needs..."></textarea>
+            </div>
+
+            <button class="btn">
+                <i class="fas fa-calendar"></i> Schedule Free Consultation
+            </button>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Company Info -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Food<span>Hub</span></h3>
+                </div>
+                <p class="footer-description">
+                    Delivering delicious meals with love and care. Your satisfaction is our top priority. 
+                    Experience the best food delivery service in town.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="menu.html"><i class="fas fa-utensils"></i> Our Menu</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-section">
+                <h4 class="footer-title">Our Services</h4>
+                <ul class="footer-links">
+                    <li><a href="home-delivery.html"><i class="fas fa-motorcycle"></i> Home Delivery</a></li>
+                    <li><a href="online-ordering.html"><i class="fas fa-laptop"></i> Online Ordering</a></li>
+                    <li><a href="catering.html"><i class="fas fa-utensil-spoon"></i> Catering</a></li>
+                    <li><a href="meal-planning.html"><i class="fas fa-clipboard-list"></i> Meal Planning</a></li>
+                    <li><a href="gift-cards.html"><i class="fas fa-gift"></i> Gift Cards</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h4 class="footer-title">Contact Info</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>123 Food Street</p>
+                            <p>Kampala, Uganda</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+256 712 345 678</p>
+                            <p>+256 789 012 345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@foodhub.com</p>
+                            <p>support@foodhub.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <p>Mon - Sun: 7:00 AM - 11:00 PM</p>
+                            <p>24/7 Online Orders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-section">
+                <h4 class="footer-title">Newsletter</h4>
+                <p class="newsletter-text">Subscribe to get updates on new offers and promotions</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="payment-methods">
+                    <p>We Accept:</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fab fa-cc-paypal" title="PayPal"></i>
+                        <i class="fas fa-mobile-alt" title="Mobile Money"></i>
+                        <i class="fas fa-money-bill-wave" title="Cash"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="footer-bottom-left">
+                    <p>&copy; 2024 FoodHub. All rights reserved.</p>
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </footer>
+
+    <script src="services.js"></script>
+    <script>
+        let currentCustomPlan = null;
+
+        function calculateCustomPlan() {
+            if (!validateForm('customPlanForm')) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const peopleCount = parseInt(document.getElementById('peopleCount').value);
+            const mealsPerDay = parseInt(document.getElementById('mealsPerDay').value);
+            const daysPerWeek = parseInt(document.getElementById('daysPerWeek').value);
+            const duration = parseInt(document.getElementById('duration').value);
+            const orgType = document.getElementById('organizationType').value;
+
+            // Calculate base price
+            let baseRate = 0;
+            switch(orgType) {
+                case 'school': baseRate = 15000; break;
+                case 'corporate': baseRate = 25000; break;
+                case 'ngo': baseRate = 12000; break;
+                case 'club': baseRate = 18000; break;
+                case 'residential': baseRate = 20000; break;
+                default: baseRate = 15000;
+            }
+
+            // Adjust for meals per day
+            const mealMultiplier = mealsPerDay === 1 ? 1 : mealsPerDay === 2 ? 1.7 : 2.3;
+            
+            // Calculate total
+            const weeklyCost = baseRate * mealMultiplier * peopleCount;
+            const totalCost = weeklyCost * (duration / 4) * 4; // Convert months to weeks
+
+            // Apply bulk discount
+            const discount = peopleCount > 100 ? 0.15 : peopleCount > 50 ? 0.1 : peopleCount > 20 ? 0.05 : 0;
+            const finalCost = totalCost * (1 - discount);
+
+            currentCustomPlan = {
+                peopleCount: peopleCount,
+                mealsPerDay: mealsPerDay,
+                daysPerWeek: daysPerWeek,
+                duration: duration,
+                orgType: orgType,
+                totalCost: finalCost
+            };
+
+            // Display results
+            document.getElementById('calculatedPrice').textContent = `UGX ${Math.round(finalCost).toLocaleString()}`;
+            document.getElementById('planDetails').textContent = 
+                `${peopleCount} people × ${mealsPerDay} meals/day × ${daysPerWeek} days/week × ${duration/4} months`;
+            
+            if (discount > 0) {
+                document.getElementById('planDetails').textContent += ` (${discount*100}% bulk discount applied)`;
+            }
+
+            document.getElementById('planCalculation').style.display = 'block';
+        }
+
+        function subscribeToCustomPlan() {
+            if (!currentCustomPlan) {
+                alert('Please calculate a plan first.');
+                return;
+            }
+
+            if (confirm(`Subscribe to custom meal plan for UGX ${Math.round(currentCustomPlan.totalCost).toLocaleString()}?`)) {
+                const subscription = {
+                    ...currentCustomPlan,
+                    subscribedAt: new Date().toISOString(),
+                    status: 'pending'
+                };
+
+                let subscriptions = JSON.parse(localStorage.getItem('mealPlanSubscriptions') || '[]');
+                subscriptions.push(subscription);
+                localStorage.setItem('mealPlanSubscriptions', JSON.stringify(subscriptions));
+
+                alert('Custom meal plan subscription requested! Our team will contact you within 24 hours to finalize details.');
+                document.getElementById('customPlanForm').reset();
+                document.getElementById('planCalculation').style.display = 'none';
+                currentCustomPlan = null;
+            }
+        }
+    </script>
+</body>
+</html>

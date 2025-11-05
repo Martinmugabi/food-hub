@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catering Services - FoodHub</title>
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-utensils"></i>
+            <h2><span>Food</span>Hub</h2>
+            <a href="index.html"><button class="back-btn">BACK TO HOME</button></a>
+        </div>
+        <div class="nav-links">
+            <a href="home-delivery.html">Home Delivery</a>
+            <a href="online-ordering.html">Online Ordering</a>
+            <a href="gift-cards.html">Gift Cards</a>
+            <a href="catering.html" class="active">Catering</a>
+            <a href="meal-planning.html">Meal Planning</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <h1>Professional Catering Services</h1>
+        <p>From intimate gatherings to grand events - we bring culinary excellence to you</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="service-content">
+        <!-- Catering Services -->
+        <section class="service-section">
+            <h2>Our Catering Services</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <i class="fas fa-ring"></i>
+                    <h3>Wedding Catering</h3>
+                    <p>Elegant menus for your special day</p>
+                    <p><strong>Starting at UGX 500,000</strong></p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Corporate Events</h3>
+                    <p>Professional catering for business events</p>
+                    <p><strong>Starting at UGX 300,000</strong></p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h3>Private Parties</h3>
+                    <p>Custom menus for personal celebrations</p>
+                    <p><strong>Starting at UGX 200,000</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cooking Sessions -->
+        <section class="service-section">
+            <h2>Online Cooking Sessions</h2>
+            <p>Learn from our expert chefs with interactive online cooking classes</p>
+            
+            <div class="session-cards">
+                <div class="session-card">
+                    <h4>Beginner Cooking</h4>
+                    <p>Learn basic cooking techniques and simple recipes</p>
+                    <div class="session-price">UGX 50,000</div>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>✓ 4 weekly sessions</li>
+                        <li>✓ Recipe booklet</li>
+                        <li>✓ Certificate of completion</li>
+                    </ul>
+                    <button class="btn" onclick="bookSession('beginner', 'Beginner Cooking', 50000)">Book Now</button>
+                </div>
+                
+                <div class="session-card">
+                    <h4>Advanced Culinary</h4>
+                    <p>Master professional cooking techniques</p>
+                    <div class="session-price">UGX 100,000</div>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>✓ 8 weekly sessions</li>
+                        <li>✓ Professional toolkit</li>
+                        <li>✓ Chef mentorship</li>
+                    </ul>
+                    <button class="btn" onclick="bookSession('advanced', 'Advanced Culinary', 100000)">Book Now</button>
+                </div>
+                
+                <div class="session-card">
+                    <h4>Specialized Cuisine</h4>
+                    <p>Focus on specific cuisines (Italian, Asian, etc.)</p>
+                    <div class="session-price">UGX 75,000</div>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>✓ 6 weekly sessions</li>
+                        <li>✓ Specialty ingredients kit</li>
+                        <li>✓ Cultural insights</li>
+                    </ul>
+                    <button class="btn" onclick="bookSession('specialized', 'Specialized Cuisine', 75000)">Book Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catering Quote Form -->
+        <section class="service-section">
+            <h2>Get a Catering Quote</h2>
+            <form id="cateringQuoteForm">
+                <div class="form-group">
+                    <label for="eventType">Event Type</label>
+                    <select id="eventType" required>
+                        <option value="">Select event type</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="birthday">Birthday Party</option>
+                        <option value="anniversary">Anniversary</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guestCount">Number of Guests</label>
+                        <input type="number" id="guestCount" min="10" max="1000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate">Event Date</label>
+                        <input type="date" id="eventDate" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventLocation">Event Location</label>
+                    <input type="text" id="eventLocation" placeholder="Enter event venue address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceType">Service Type</label>
+                    <select id="serviceType" required>
+                        <option value="">Select service type</option>
+                        <option value="buffet">Buffet Service</option>
+                        <option value="plated">Plated Service</option>
+                        <option value="family">Family Style</option>
+                        <option value="stations">Food Stations</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dietaryRequirements">Dietary Requirements</label>
+                    <textarea id="dietaryRequirements" rows="3" placeholder="Any allergies, vegetarian/vegan requirements, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests</label>
+                    <textarea id="specialRequests" rows="3" placeholder="Any specific menu requests or themes..."></textarea>
+                </div>
+
+                <button type="button" class="btn btn-success" onclick="submitCateringQuote()">
+                    <i class="fas fa-calculator"></i> Get Quote
+                </button>
+            </form>
+        </section>
+
+        <!-- Cooking Session Booking -->
+        <section class="service-section">
+            <h2>Book a Cooking Session</h2>
+            <div class="form-group">
+                <label for="sessionType">Session Type</label>
+                <select id="sessionType">
+                    <option value="one-time">One-time Session (UGX 25,000)</option>
+                    <option value="weekly">Weekly Package (UGX 80,000/month)</option>
+                    <option value="monthly">Monthly Intensive (UGX 250,000)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cuisineFocus">Cuisine Focus</label>
+                <select id="cuisineFocus">
+                    <option value="general">General Cooking</option>
+                    <option value="italian">Italian Cuisine</option>
+                    <option value="asian">Asian Fusion</option>
+                    <option value="local">Local Specialties</option>
+                    <option value="baking">Baking & Pastry</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="preferredDay">Preferred Day</label>
+                    <select id="preferredDay">
+                        <option value="weekday">Weekday</option>
+                        <option value="weekend">Weekend</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timeOfDay">Time of Day</label>
+                    <select id="timeOfDay">
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="evening">Evening</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cookingGoals">Your Cooking Goals</label>
+                <textarea id="cookingGoals" rows="3" placeholder="What do you hope to achieve from these sessions?"></textarea>
+            </div>
+
+            <button class="btn" onclick="bookCookingSession()">
+                <i class="fas fa-book"></i> Book Session
+            </button>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="service-section">
+            <h2>Client Testimonials</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <i class="fas fa-quote-left" style="color: var(--primary);"></i>
+                    <p>"The wedding catering was absolutely perfect! Our guests are still talking about the food."</p>
+                    <p><strong>- Sarah & James</strong></p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-quote-left" style="color: var(--primary);"></i>
+                    <p>"The corporate lunch was a huge success. Professional service and delicious food!"</p>
+                    <p><strong>- Tech Solutions Ltd.</strong></p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-quote-left" style="color: var(--primary);"></i>
+                    <p>"The cooking sessions transformed my kitchen skills. I'm now confident cooking for my family."</p>
+                    <p><strong>- Maria K.</strong></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Company Info -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Food<span>Hub</span></h3>
+                </div>
+                <p class="footer-description">
+                    Delivering delicious meals with love and care. Your satisfaction is our top priority. 
+                    Experience the best food delivery service in town.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="menu.html"><i class="fas fa-utensils"></i> Our Menu</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-section">
+                <h4 class="footer-title">Our Services</h4>
+                <ul class="footer-links">
+                    <li><a href="home-delivery.html"><i class="fas fa-motorcycle"></i> Home Delivery</a></li>
+                    <li><a href="online-ordering.html"><i class="fas fa-laptop"></i> Online Ordering</a></li>
+                    <li><a href="catering.html"><i class="fas fa-utensil-spoon"></i> Catering</a></li>
+                    <li><a href="meal-planning.html"><i class="fas fa-clipboard-list"></i> Meal Planning</a></li>
+                    <li><a href="gift-cards.html"><i class="fas fa-gift"></i> Gift Cards</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h4 class="footer-title">Contact Info</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>123 Food Street</p>
+                            <p>Kampala, Uganda</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+256 712 345 678</p>
+                            <p>+256 789 012 345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@foodhub.com</p>
+                            <p>support@foodhub.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <p>Mon - Sun: 7:00 AM - 11:00 PM</p>
+                            <p>24/7 Online Orders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-section">
+                <h4 class="footer-title">Newsletter</h4>
+                <p class="newsletter-text">Subscribe to get updates on new offers and promotions</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="payment-methods">
+                    <p>We Accept:</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fab fa-cc-paypal" title="PayPal"></i>
+                        <i class="fas fa-mobile-alt" title="Mobile Money"></i>
+                        <i class="fas fa-money-bill-wave" title="Cash"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="footer-bottom-left">
+                    <p>&copy; 2024 FoodHub. All rights reserved.</p>
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </footer>
+
+    <script src="services.js"></script>
+    <script>
+        function submitCateringQuote() {
+            if (!validateForm('cateringQuoteForm')) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const guestCount = document.getElementById('guestCount').value;
+            const eventType = document.getElementById('eventType').value;
+            
+            // Calculate estimated quote
+            let basePrice = 0;
+            switch(eventType) {
+                case 'wedding': basePrice = 500000; break;
+                case 'corporate': basePrice = 300000; break;
+                case 'birthday': basePrice = 200000; break;
+                default: basePrice = 250000;
+            }
+
+            const totalQuote = basePrice + (guestCount * 15000); // UGX 15,000 per guest
+
+            alert(`Your estimated catering quote: UGX ${totalQuote.toLocaleString()}\n\nOur team will contact you within 24 hours to discuss details.`);
+            
+            // Store quote request
+            const quoteData = {
+                eventType: eventType,
+                guestCount: guestCount,
+                date: document.getElementById('eventDate').value,
+                quote: totalQuote,
+                timestamp: new Date().toISOString()
+            };
+
+            let quotes = JSON.parse(localStorage.getItem('cateringQuotes') || '[]');
+            quotes.push(quoteData);
+            localStorage.setItem('cateringQuotes', JSON.stringify(quotes));
+        }
+
+        function bookCookingSession() {
+            const sessionType = document.getElementById('sessionType').value;
+            const cuisine = document.getElementById('cuisineFocus').value;
+            
+            let price = 0;
+            switch(sessionType) {
+                case 'one-time': price = 25000; break;
+                case 'weekly': price = 80000; break;
+                case 'monthly': price = 250000; break;
+            }
+
+            if (confirm(`Book ${sessionType} cooking session focusing on ${cuisine} for UGX ${price.toLocaleString()}?`)) {
+                const sessionData = {
+                    type: sessionType,
+                    cuisine: cuisine,
+                    price: price,
+                    day: document.getElementById('preferredDay').value,
+                    time: document.getElementById('timeOfDay').value,
+                    goals: document.getElementById('cookingGoals').value,
+                    bookedAt: new Date().toISOString()
+                };
+
+                let sessions = JSON.parse(localStorage.getItem('cookingSessions') || '[]');
+                sessions.push(sessionData);
+                localStorage.setItem('cookingSessions', JSON.stringify(sessions));
+
+                alert('Cooking session booked successfully! Our chef will contact you to schedule the first session.');
+            }
+        }
+    </script>
+</body>
+</html>
