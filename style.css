@@ -720,7 +720,6 @@ img {
 
 /* Testimonials Section */
 .testimonials-slider {
-    position: relative;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -731,7 +730,12 @@ img {
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     text-align: center;
-    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+    gap: 20px;
+
+    
 }
 
 .testimonial-card.active {
@@ -746,6 +750,7 @@ img {
     object-fit: cover;
     margin: 0 auto 20px;
     border: 3px solid var(--primary-color);
+    
 }
 
 .testimonial-content p {
