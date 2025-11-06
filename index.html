@@ -12,31 +12,69 @@
 </head>
 <body>
     <!-- Header Section -->
-    <header class="header-section" id="home">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <h2>FoodHub</h2>
+<header class="header-section" id="home">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <h2>FoodHub</h2>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <!-- Show when user is NOT logged in -->
+                <div class="auth-element">
+                    <button class="btn btn-login" onclick="window.location.href='login.html'">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <button class="btn btn-signup" onclick="window.location.href='signup.html'">
+                        <i class="fas fa-user-plus"></i> Sign Up
+                    </button>
                 </div>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="header-buttons">
-                    <button class="btn btn-login">Login</button>
-                    <button class="btn btn-signup">Sign Up</button>
+
+                <!-- Show when user IS logged in -->
+                <div class="user-element" style="display: none;">
+                    <div class="user-menu">
+                        <div class="user-info">
+                            <div class="user-avatar" id="headerUserAvatar">U</div>
+                            <span class="user-name" id="headerUserName">User</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="user-dropdown">
+                            <a href="profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i> My Profile
+                            </a>
+                            <a href="orders.html" class="dropdown-item">
+                                <i class="fas fa-shopping-bag"></i> My Orders
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item logout-btn" id="headerLogoutBtn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+
+<!-- Add Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
+        <div class="bg-slideshow">
+            <div class="bg-slide" style="background-image: url('foodhub/about us.jpg')"></div>
+            <div class="bg-slide" style="background-image: url('foodhub/best offer.jpg')"></div>
+            <div class="bg-slide" style="background-image: url('foodhub/burgers.jpg')"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <h1>Welcome to Food Hub</h1>
@@ -53,7 +91,6 @@
                         <i class="fas fa-users"></i>
                         <p>Customer Satisfaction</p>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -748,7 +785,7 @@
             <p class="section-subtitle">What our customers say about us</p>
             <div class="testimonials-slider">
                 <div class="testimonial-card active">
-                    <img src=" photos/Me.886.jpg" alt="John Doe">
+                    <img src=" foodhub/tts.jpg" alt="John Doe">
                     <div class="testimonial-content">
                         <p>"The food was amazing! Best service ever. I order from Food Hub at least twice a week now."</p>
                         <div class="rating">
@@ -762,7 +799,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <img src="photos/Me.886.jpg" alt="Jane Smith">
+                    <img src="foodhub/tts2.jpg" alt="Jane Smith">
                     <div class="testimonial-content">
                         <p>"I love the variety of dishes available. The quality is consistently excellent."</p>
                         <div class="rating">
@@ -776,7 +813,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <img src="images/customer3.jpg" alt="Alice Johnson">
+                    <img src="foodhub/IMG_3683~2.jpeg" alt="Alice Johnson">
                     <div class="testimonial-content">
                         <p>"Great experience, will definitely order again! The delivery is always on time."</p>
                         <div class="rating">
@@ -786,7 +823,7 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
                         </div>
-                        <h4>Alice Johnson</h4>
+                        <h4>Martin Mugabi</h4>
                     </div>
                 </div>
                 <div class="slider-controls">
@@ -1011,10 +1048,10 @@
                 <h4 class="footer-title">Quick Links</h4>
                 <ul class="footer-links">
                     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                    <li><a href="menu.html"><i class="fas fa-utensils"></i> Our Menu</a></li>
-                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="About us.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="menu2.html"><i class="fas fa-utensils"></i> Our Menu</a></li>
+                    <li><a href="Services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="Contact .html"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </div>
 
@@ -1116,5 +1153,9 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+
+    <!-- Add this before closing body tag in all pages -->
+<script src="access-control.js"></script>
+<script src="auth.js"></script>
 </body>
 </html>

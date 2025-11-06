@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - FoodHub</title>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+        }
+        
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .profile-section {
+            margin-bottom: 30px;
+        }
+        
+        .profile-section h3 {
+            color: #2f3542;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f2f6;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .photo-upload {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff6b6b;
+            margin-bottom: 15px;
+        }
+        
+        .upload-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .orders-list {
+            margin-top: 20px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .order-info h4 {
+            margin: 0 0 5px 0;
+            color: #2f3542;
+        }
+        
+        .order-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .order-price {
+            font-weight: bold;
+            color: #ff6b6b;
+            font-size: 1.1rem;
+        }
+        
+        .visit-history {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .visit-item {
+            padding: 10px;
+            border-bottom: 1px solid #e1e5e9;
+            font-size: 0.9rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header would be here -->
+    
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="photo-upload">
+                <img src="" alt="Profile Photo" class="profile-photo" id="profilePhoto">
+                <br>
+                <button class="upload-btn" onclick="document.getElementById('photoInput').click()">
+                    <i class="fas fa-camera"></i> Change Photo
+                </button>
+                <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="uploadPhoto(event)">
+            </div>
+            <h2 id="profileUserName">User Name</h2>
+            <p id="profileUserEmail">user@example.com</p>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-section">
+                <h3><i class="fas fa-user"></i> Personal Information</h3>
+                <form id="profileForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profileName">Full Name</label>
+                            <input type="text" id="profileName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="profilePhone">Phone Number</label>
+                            <input type="tel" id="profilePhone" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profileEmail">Email Address</label>
+                            <input type="email" id="profileEmail" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="profileLocation">Location</label>
+                            <input type="text" id="profileLocation" class="form-control" placeholder="Enter your location">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn" style="max-width: 200px;">
+                        <i class="fas fa-save"></i> Update Profile
+                    </button>
+                </form>
+            </div>
+
+            <div class="profile-section">
+                <h3><i class="fas fa-chart-bar"></i> Account Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalOrders">0</div>
+                        <div class="stat-label">Total Orders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalSpent">UGX 0</div>
+                        <div class="stat-label">Total Spent</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="visitCount">0</div>
+                        <div class="stat-label">Total Visits</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="memberSince">0</div>
+                        <div class="stat-label">Days as Member</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h3><i class="fas fa-shopping-bag"></i> My Orders</h3>
+                <div class="orders-list" id="ordersList">
+                    <!-- Orders will be loaded here -->
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h3><i class="fas fa-history"></i> Visit History</h3>
+                <div class="visit-history" id="visitHistory">
+                    <!-- Visit history will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        class ProfileManager {
+            constructor() {
+                this.currentUser = null;
+                this.loadProfile();
+            }
+
+            loadProfile() {
+                const user = JSON.parse(localStorage.getItem('foodhub_session'));
+                if (!user) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+
+                this.currentUser = user;
+                this.displayUserInfo();
+                this.loadStatistics();
+                this.loadOrders();
+                this.loadVisitHistory();
+                this.setupEventListeners();
+            }
+
+            displayUserInfo() {
+                document.getElementById('profileUserName').textContent = this.currentUser.fullName;
+                document.getElementById('profileUserEmail').textContent = this.currentUser.email;
+                document.getElementById('profileName').value = this.currentUser.fullName;
+                document.getElementById('profileEmail').value = this.currentUser.email;
+                document.getElementById('profilePhone').value = this.currentUser.phone || '';
+                document.getElementById('profileLocation').value = this.currentUser.location || '';
+                
+                // Load profile photo
+                if (this.currentUser.profilePhoto) {
+                    document.getElementById('profilePhoto').src = this.currentUser.profilePhoto;
+                }
+            }
+
+            loadStatistics() {
+                // Total orders
+                const orders = JSON.parse(localStorage.getItem('user_orders') || '{}');
+                const userOrders = orders[this.currentUser.id] || [];
+                document.getElementById('totalOrders').textContent = userOrders.length;
+
+                // Total spent
+                const totalSpent = userOrders.reduce((sum, order) => sum + order.total, 0);
+                document.getElementById('totalSpent').textContent = `UGX ${totalSpent.toLocaleString()}`;
+
+                // Visit count
+                const visits = JSON.parse(localStorage.getItem('user_visits') || '{}');
+                const userVisits = visits[this.currentUser.id] || [];
+                document.getElementById('visitCount').textContent = userVisits.length;
+
+                // Days as member
+                const joinDate = new Date(this.currentUser.joinDate);
+                const today = new Date();
+                const daysMember = Math.floor((today - joinDate) / (1000 * 60 * 60 * 24));
+                document.getElementById('memberSince').textContent = daysMember;
+            }
+
+            loadOrders() {
+                const orders = JSON.parse(localStorage.getItem('user_orders') || '{}');
+                const userOrders = orders[this.currentUser.id] || [];
+                const ordersList = document.getElementById('ordersList');
+
+                if (userOrders.length === 0) {
+                    ordersList.innerHTML = '<p style="text-align: center; color: #666;">No orders yet</p>';
+                    return;
+                }
+
+                ordersList.innerHTML = userOrders.map(order => `
+                    <div class="order-item">
+                        <div class="order-info">
+                            <h4>Order #${order.id}</h4>
+                            <p>${order.items.length} items • ${new Date(order.date).toLocaleDateString()}</p>
+                            <p>Status: <span style="color: #4CAF50;">${order.status}</span></p>
+                        </div>
+                        <div class="order-price">UGX ${order.total.toLocaleString()}</div>
+                    </div>
+                `).join('');
+            }
+
+            loadVisitHistory() {
+                const visits = JSON.parse(localStorage.getItem('user_visits') || '{}');
+                const userVisits = visits[this.currentUser.id] || [];
+                const visitHistory = document.getElementById('visitHistory');
+
+                if (userVisits.length === 0) {
+                    visitHistory.innerHTML = '<p style="text-align: center; color: #666;">No visit history</p>';
+                    return;
+                }
+
+                visitHistory.innerHTML = userVisits.map(visitDate => `
+                    <div class="visit-item">
+                        <i class="fas fa-calendar-day"></i> Visited on ${new Date(visitDate).toLocaleDateString('en-US', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        })}
+                    </div>
+                `).join('');
+            }
+
+            setupEventListeners() {
+                document.getElementById('profileForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.updateProfile();
+                });
+            }
+
+            updateProfile() {
+                const users = JSON.parse(localStorage.getItem('foodhub_users'));
+                const userIndex = users.findIndex(u => u.id === this.currentUser.id);
+                
+                if (userIndex !== -1) {
+                    users[userIndex].fullName = document.getElementById('profileName').value;
+                    users[userIndex].phone = document.getElementById('profilePhone').value;
+                    users[userIndex].location = document.getElementById('profileLocation').value;
+                    
+                    localStorage.setItem('foodhub_users', JSON.stringify(users));
+                    
+                    // Update session
+                    this.currentUser = { ...users[userIndex] };
+                    delete this.currentUser.password;
+                    localStorage.setItem('foodhub_session', JSON.stringify(this.currentUser));
+                    
+                    this.showNotification('Profile updated successfully!', 'success');
+                }
+            }
+
+            showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${type === 'success' ? '#4CAF50' : '#ff4757'};
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 10px;
+                    z-index: 10000;
+                `;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => notification.remove(), 3000);
+            }
+        }
+
+        function uploadPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profilePhoto').src = e.target.result;
+                    
+                    // Save to user data
+                    const users = JSON.parse(localStorage.getItem('foodhub_users'));
+                    const session = JSON.parse(localStorage.getItem('foodhub_session'));
+                    const userIndex = users.findIndex(u => u.id === session.id);
+                    
+                    if (userIndex !== -1) {
+                        users[userIndex].profilePhoto = e.target.result;
+                        localStorage.setItem('foodhub_users', JSON.stringify(users));
+                        
+                        session.profilePhoto = e.target.result;
+                        localStorage.setItem('foodhub_session', JSON.stringify(session));
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Initialize profile manager
+        document.addEventListener('DOMContentLoaded', () => {
+            new ProfileManager();
+        });
+    </script>
+</body>
+</html>

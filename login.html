@@ -3,372 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Hub - Login</title>
+    <title>Login - FoodHub</title>
+    <link rel="stylesheet" href="auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #ff6b6b;
-            --secondary: #ffa502;
-            --dark: #2f3542;
-            --light: #f1f2f6;
-            --success: #2ed573;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .login-container {
-            width: 100%;
-            max-width: 400px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .login-header {
-            background: var(--primary);
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-        
-        .login-header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-        
-        .login-header p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .login-form {
-            padding: 25px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        
-        .input-with-icon {
-            position: relative;
-        }
-        
-        .input-with-icon i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #7f8c8d;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px 12px 45px;
-            border: 2px solid #dfe6e9;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
-        }
-        
-        .remember-forgot {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .remember-me {
-            display: flex;
-            align-items: center;
-        }
-        
-        .remember-me input {
-            margin-right: 8px;
-        }
-        
-        .forgot-password a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .login-btn:hover {
-            background: #ff5252;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
-        }
-        
-        .social-login {
-            margin-top: 25px;
-            text-align: center;
-        }
-        
-        .social-login p {
-            margin-bottom: 15px;
-            color: #7f8c8d;
-            position: relative;
-        }
-        
-        .social-login p::before,
-        .social-login p::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            width: 30%;
-            height: 1px;
-            background: #dfe6e9;
-        }
-        
-        .social-login p::before {
-            left: 0;
-        }
-        
-        .social-login p::after {
-            right: 0;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-3px);
-        }
-        
-        .facebook {
-            background: #3b5998;
-        }
-        
-        .google {
-            background: #db4437;
-        }
-        
-        .twitter {
-            background: #1da1f2;
-        }
-        
-        .register-link {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .register-link a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 480px) {
-            .login-container {
-                margin: 20px;
-                border-radius: 10px;
-            }
-            
-            .login-header {
-                padding: 20px;
-            }
-            
-            .login-form {
-                padding: 20px;
-            }
-        }
-        
-        /* Error message styling */
-        .error-message {
-            color: #e74c3c;
-            font-size: 0.8rem;
-            margin-top: 5px;
-            display: none;
-        }
-    </style>
 </head>
-<body>
-    <div class="login-container">
-        <div class="login-header">
-            <h1><i class="fas fa-utensils"></i> Food Hub</h1>
-            <p>Login to enjoy delicious meals</p>
+<body class="auth-page">
+    <!-- Back to Home -->
+    <a href="index.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <div class="auth-container">
+        <!-- Header -->
+        <div class="auth-header">
+            <div class="auth-logo">
+                <i class="fas fa-utensils"></i>
+                <h1>Food<span>Hub</span></h1>
+            </div>
+            <p>Welcome back! Sign in to your account</p>
         </div>
-        
-        <form class="login-form" id="loginForm">
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <div class="input-with-icon">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+
+        <!-- Login Form -->
+        <div class="auth-forms">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
                 </div>
-                <div class="error-message" id="emailError">Please enter a valid email address</div>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Password</label>
-                <div class="input-with-icon">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
-                    <i class="fas fa-eye toggle-password" style="left: auto; right: 15px; cursor: pointer;"></i>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                    <button type="button" class="password-toggle">
+                        <i class="fas fa-eye"></i>
+                    </button>
                 </div>
-                <div class="error-message" id="passwordError">Password must be at least 6 characters</div>
-            </div>
-            
-            <div class="remember-forgot">
-                <div class="remember-me">
-                    <input type="checkbox" id="remember">
-                    <label for="remember">Remember me</label>
+
+                <button type="submit" class="auth-btn">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+
+                <div class="auth-switch">
+                    Don't have an account? 
+                    <a href="signup.html">Create Account</a>
                 </div>
-                <div class="forgot-password">
-                    <a href="password.html ">Forgot password?</a>
-                </div>
-            </div>
-            
-            <button type="submit" class="login-btn">Login</button>
-            
-            <div class="social-login">
-                <p>Or login with</p>
-                <div class="social-icons">
-                    <div class="social-icon facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <div class="social-icon google">
-                        <i class="fab fa-google"></i>
-                    </div>
-                    <div class="social-icon twitter">
-                        <i class="fab fa-twitter"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="register-link">
-                Don't have an account? <a href=" signup.html ">Register here</a>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
+    <script src="auth.js"></script>
     <script>
-        // Toggle password visibility
-        document.querySelector('.toggle-password').addEventListener('click', function() {
-            const passwordField = document.getElementById('password');
-            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordField.setAttribute('type', type);
-            this.classList.toggle('fa-eye');
-            this.classList.toggle('fa-eye-slash');
-        });
-        
-        // Form validation
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const emailError = document.getElementById('emailError');
-            const passwordError = document.getElementById('passwordError');
-            
-            // Reset errors
-            emailError.style.display = 'none';
-            passwordError.style.display = 'none';
-            
-            let isValid = true;
-            
-            // Email validation
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                emailError.style.display = 'block';
-                isValid = false;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is already logged in
+            if (authSystem.isAuthenticated()) {
+                window.location.href = 'index.html';
+                return;
             }
-            
-            // Password validation
-            if (password.length < 6) {
-                passwordError.style.display = 'block';
-                isValid = false;
-            }
-            
-            if (isValid) {
-                // Simulate login process
-                const loginBtn = document.querySelector('.login-btn');
-                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
-                loginBtn.disabled = true;
+
+            // Password toggle
+            document.querySelector('.password-toggle').addEventListener('click', function() {
+                const input = document.getElementById('loginPassword');
+                const icon = this.querySelector('i');
                 
-                // In a real app, you would send this data to your server
-                setTimeout(() => {
-                    alert('Login successful! Redirecting to dashboard...');
-                    // window.location.href = 'dashboard.html'; // Uncomment to redirect
-                    loginBtn.innerHTML = 'Login';
-                    loginBtn.disabled = false;
-                }, 1500);
-            }
-        });
-        
-        // Social login buttons
-        document.querySelectorAll('.social-icon').forEach(icon => {
-            icon.addEventListener('click', function() {
-                const platform = this.classList.contains('facebook') ? 'Facebook' : 
-                               this.classList.contains('google') ? 'Google' : 'Twitter';
-                alert(`Redirecting to ${platform} login...`);
-                // In a real app, you would implement OAuth here
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.className = 'fas fa-eye-slash';
+                } else {
+                    input.type = 'password';
+                    icon.className = 'fas fa-eye';
+                }
+            });
+
+            // Form submission
+            document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+
+                try {
+                    // Show loading state
+                    submitBtn.innerHTML = '<span class="loading"></span> Signing In...';
+                    submitBtn.disabled = true;
+
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+
+                    await authSystem.login(email, password);
+                    
+                    authSystem.showNotification('Login successful! Redirecting...', 'success');
+                    
+                    // Redirect to home page
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+
+                } catch (error) {
+                    authSystem.showNotification(error, 'error');
+                } finally {
+                    // Reset button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
             });
         });
     </script>

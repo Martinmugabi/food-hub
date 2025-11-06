@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    
     // Mobile Menu Toggle
     const menuToggle = document.createElement('div');
     menuToggle.classList.add('menu-toggle');
@@ -791,3 +792,278 @@ function downloadReceipt() {
 
 
 
+
+
+
+
+
+
+// footer.js - Footer functionality
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Back to top functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // Show/hide back to top button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    
+    // Smooth scroll to top
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Newsletter form submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('.newsletter-input');
+            const email = emailInput.value.trim();
+            
+            if (validateEmail(email)) {
+                // Simulate newsletter subscription
+                subscribeToNewsletter(email);
+                emailInput.value = '';
+                
+                // Show success message
+                showNotification('Successfully subscribed to newsletter!', 'success');
+            } else {
+                showNotification('Please enter a valid email address.', 'error');
+            }
+        });
+    }
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Add loading animation to social links
+    document.querySelectorAll('.social-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const icon = this.querySelector('i');
+            icon.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                icon.style.transform = 'scale(1)';
+            }, 300);
+        });
+    });
+});
+
+// Email validation function
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// Newsletter subscription function
+function subscribeToNewsletter(email) {
+    // In a real application, you would send this to your backend
+    console.log('Subscribing email:', email);
+    
+    // Store in localStorage for demo purposes
+    let subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+    if (!subscribers.includes(email)) {
+        subscribers.push(email);
+        localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+    }
+}
+
+// Notification function
+function showNotification(message, type = 'info') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Add styles for notification
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease;
+        max-width: 400px;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Remove notification after 5 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
+
+// Add CSS animations for notifications
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .notification-content i {
+        font-size: 1.2rem;
+    }
+`;
+document.head.appendChild(style);
+
+// Intersection Observer for footer animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+        }
+    });
+}, observerOptions);
+
+// Observe footer sections when added to DOM
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.footer-section').forEach(section => {
+        observer.observe(section);
+    });
+});
+
+
+
+
+
+
+
+
+
+
+// auth.js - Authentication system */
+// Simple Auth System for Header
+    class HeaderAuth {
+        constructor() {
+            this.currentUser = null;
+            this.checkAuth();
+        }
+
+        checkAuth() {
+            // Check if user is logged in
+            const session = localStorage.getItem('foodhub_session');
+            if (session) {
+                this.currentUser = JSON.parse(session);
+                this.updateHeader(true);
+            } else {
+                this.updateHeader(false);
+            }
+        }
+
+        updateHeader(isLoggedIn) {
+            const authElement = document.querySelector('.auth-element');
+            const userElement = document.querySelector('.user-element');
+            
+            if (isLoggedIn && this.currentUser) {
+                // User is logged in
+                authElement.style.display = 'none';
+                userElement.style.display = 'block';
+                
+                // Update user info
+                const userName = document.getElementById('headerUserName');
+                const userAvatar = document.getElementById('headerUserAvatar');
+                
+                userName.textContent = this.currentUser.fullName.split(' ')[0];
+                userAvatar.textContent = this.getUserInitials(this.currentUser.fullName);
+            } else {
+                // User is not logged in
+                authElement.style.display = 'flex';
+                userElement.style.display = 'none';
+            }
+        }
+
+        getUserInitials(fullName) {
+            return fullName.split(' ').map(n => n[0]).join('').toUpperCase();
+        }
+
+        logout() {
+            localStorage.removeItem('foodhub_session');
+            this.currentUser = null;
+            this.updateHeader(false);
+            window.location.href = 'index.html';
+        }
+    }
+
+    // Initialize header auth when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        const headerAuth = new HeaderAuth();
+        
+        // Logout button
+        const logoutBtn = document.getElementById('headerLogoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                headerAuth.logout();
+            });
+        }
+
+        // Update header when storage changes (for multiple tabs)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'foodhub_session') {
+                headerAuth.checkAuth();
+            }
+        });
+    });
